@@ -17,6 +17,7 @@ public class TileManager : Singleton<TileManager>
     [Header("Debug")]
     [Tooltip("Editor상에서 바로 확인을 활성화")]
     [SerializeField] private bool OnDrawTile;
+    private Vector2 DrawBoxSize = new Vector2(2.15f, 2.15f);
 
     protected override void Awake()
     {
@@ -87,7 +88,6 @@ public class TileManager : Singleton<TileManager>
 
             for(int i = 0;i < Mathf.Abs(target_y);i++)
             {
-                Debug.Log(GameMap[currty_y + ((i + 1) * offset)][(int)playerPos.x].PlayerMoveAble + "_" + playerPos+"_" + targetPos);
                 if (!GameMap[currty_y + ((i+1) * offset)][(int)playerPos.x].PlayerMoveAble)
                     return new Vector2(playerPos.x,currty_y +(i*offset));
             }
@@ -131,17 +131,17 @@ public class TileManager : Singleton<TileManager>
         if (spriteRenderer == null || spriteRenderer.sprite == null) return;
 
         Sprite sprite = spriteRenderer.sprite;
-        Texture2D texture = sprite.texture;
 
-        // 타일 위치에 Sprite를 그리기
+        // 모든 타일 위치에 초록색 네모 그리기
         for (int y = 0; y < sizeY; y++)
         {
             for (int x = 0; x < sizeX; x++)
             {
                 Vector3 tilePosition = new Vector3(ScappingSize.x * x, ScappingSize.y * (-y), 0) + tileoffset;
 
-                // Sprite를 사각형으로 Scene 뷰에 그리기
-                DrawSprite(sprite, tilePosition, spriteRenderer.color);
+
+                // 초록색 네모로 표시
+                DrawSprite(sprite, tilePosition, Color.green);
             }
         }
     }
@@ -150,29 +150,15 @@ public class TileManager : Singleton<TileManager>
     {
         if (sprite == null) return;
 
-        // Sprite의 크기와 UV 좌표 계산
-        Vector2 spriteSize = sprite.bounds.size;
-        Rect textureRect = sprite.textureRect;
-        textureRect.x /= sprite.texture.width;
-        textureRect.y /= sprite.texture.height;
-        textureRect.width /= sprite.texture.width;
-        textureRect.height /= sprite.texture.height;
+        // Sprite 크기 계산
+        Vector2 spriteSize = DrawBoxSize;
 
-        // Position을 Pixel Perfect로 스냅 처리
-        position.x = Mathf.Round(position.x * 100f) / 100f;
-        position.y = Mathf.Round(position.y * 100f) / 100f;
 
-        // Sprite 그리기
-        Material spriteMaterial = new Material(Shader.Find("Sprites/Default"));
-        spriteMaterial.color = color;
-
-        Graphics.DrawTexture(
-            new Rect(position.x, position.y, spriteSize.x, spriteSize.y),
-            sprite.texture,
-            textureRect,
-            0, 0, 0, 0,
-            color,
-            spriteMaterial
+        // Gizmos로 초록색 네모 그리기
+        Gizmos.color = color;
+        Gizmos.DrawWireCube(
+            position,
+            new Vector3(spriteSize.x, spriteSize.y, 0)
         );
     }
 #endif

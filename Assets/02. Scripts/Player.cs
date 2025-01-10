@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     //Move
     [Header("MOVE")]
+    [SerializeField] Vector2 StartPos;
     [SerializeField] float MoveSpeed;
     [SerializeField] float DashSpeed;
     [SerializeField] float ForcingMoveSpeed;
@@ -57,6 +58,8 @@ public class Player : MonoBehaviour
 
     private void Init_StartSet()
     {
+        DirectForcingMove(StartPos);
+        CurrtyPos = StartPos;
         CurrtyHP = MaxHP;
         DieHP = 0;
     }
@@ -116,7 +119,10 @@ public class Player : MonoBehaviour
             if (pos.x != 0)
                 AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
             if (pos.y != 0)
+            {
                 AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
+                AnimFloatSet("H", 0);
+            }
             StartCoroutine("MoveToTarget",MoveSpeed);
         }
     }
@@ -163,10 +169,13 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
-            if(pos.x != 0)
+            if (pos.x != 0)
                 AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
             if (pos.y != 0)
+            {
                 AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
+                AnimFloatSet("H", 0);
+            }
             AnimBoolSet("DASH", true);
             StartCoroutine("MoveToTarget", MoveSpeed);
         }
@@ -198,9 +207,9 @@ public class Player : MonoBehaviour
     }
 
     //즉시 강제 이동 
-    public void DirectForcingMove()
+    public void DirectForcingMove(Vector2 pos)
     {
-
+        tf.position = tileManager.GetTileObejctPosition(pos); 
     }
 
     bool MovePositionGet(Vector2 pos)
@@ -232,18 +241,18 @@ public class Player : MonoBehaviour
         if (OnInvincible)
             return;
         CurrtyHP -= amount;
+        InvincibleStart(HitInvincibleTime);
         if (CurrtyHP <= 0)
             Die();
     }
 
     void Die()
     {
-        //DieAnimation
+        AnimTriggerSet("DIE");
     }
     #endregion
 
     #region Interact
-
     public void Interactor()
     {
         TileType type = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x].Type;
@@ -291,7 +300,6 @@ public class Player : MonoBehaviour
     }
     void InvincibleEnd()
     {
-        //애니메이션 중지
         OnInvincible = false;
         AnimFloatSet("ONINVINCIBLE", 0);
     }
@@ -304,6 +312,10 @@ public class Player : MonoBehaviour
     private void AnimBoolSet(string name,bool value)
     {
         anim.SetBool(name, value);
+    }
+    private void AnimTriggerSet(string name)
+    {
+        anim.SetTrigger(name);
     }
     #endregion
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestPattern
   m_EditorClassIdentifier: 
   tilesets:
-  - coolDownTime: 3
+  - coolDownTime: 1
     useTile: 1
     tilePositions:
     - {x: 5, y: 4}
@@ -26,9 +26,8 @@ MonoBehaviour:
     - {x: 8, y: 2}
     - {x: 9, y: 3}
     - {x: 2, y: 2}
-    - {x: 1, y: 3}
-    type: 3
-    startupTime: 2
+    type: 2
+    startupTime: 0.1
     holdingTime: 1
     useTrail: 1
     trails:
@@ -50,8 +49,8 @@ MonoBehaviour:
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 1, y: 4}
-    type: 3
-    startupTime: 5
+    type: 2
+    startupTime: 0.1
     holdingTime: 4
     useTrail: 0
     trails: []
