@@ -38,20 +38,13 @@ public class TileManager : Singleton<TileManager>
     // 타일 속성 변경 ( 단수 )
     public void SetTileType(int x, int y, TileType type, float startupTime, float holdingTime)
     {
-        // 1. 타일 애니메이터 속도 변경 (선딜) 
-        // 2. 애니메이션 클립에서 이벤트 트리거 호출 
-        // 3. 이벤트 트리거 함수에서 타일 홀딩 코루틴 호출 
 
-        GameMap[y][x].SetTileType(type, startupTime, holdingTime);
     }
 
     // 타일 속성 변경 ( 복수 )
     public void SetTileType(List<Vector2> pos, TileType type, float startupTime, float holdingTime)
     {
-        for (int i = 0; i < pos.Count; i++)
-        {
-            GameMap[(int)pos[i].y][(int)pos[i].x].SetTileType(type, startupTime, holdingTime);
-        }
+
     }
 
     // 플레이어 이동 경로 체크 
@@ -59,10 +52,5 @@ public class TileManager : Singleton<TileManager>
     {
 
         return new Vector2();
-    }
-
-    public Vector3 GetTileObejctPosition(Vector2 pos)
-    {
-        return GameMap[(int)pos.y][(int)pos.x].transform.position;
     }
 }
