@@ -11,7 +11,7 @@ public class TileSetData
 
     [Header("타일 상태 변환")]
     public bool useTile;
-    public List<Vector2> tilePositions;
+    public List<Vector2> tilePositions = new List<Vector2>();
     public TileType type;
     public float startupTime;
     public int holdingTime;
