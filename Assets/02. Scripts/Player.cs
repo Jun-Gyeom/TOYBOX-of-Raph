@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     //HP 
     int CurrtyHP;
-    int MaxHP;
+    [SerializeField] int MaxHP;
     int DieHP =0;
 
     Animator Anim;
@@ -33,11 +33,18 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Init_GetComponent();
+        Init_StartSet();
     }
+
     private void Init_GetComponent()
     {
         tileManager = TileManager.Instance;
         tf = transform;
+    }
+
+    private void Init_StartSet()
+    {
+
     }
     #endregion
     #region Update
@@ -60,7 +67,6 @@ public class Player : MonoBehaviour
 
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
-            Debug.Log("GetKey");
 
 
             if (h == 0 && v == 0)

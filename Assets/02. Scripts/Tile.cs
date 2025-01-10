@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
         this.x = x;
         this.y = y;
         TryGetComponent(out anim);
-        SetTileType(TileType.FALL, 5, 5);
+        SetTileType(TileType.FALL, 5, 100);
     }
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)

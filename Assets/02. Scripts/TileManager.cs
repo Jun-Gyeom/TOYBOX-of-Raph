@@ -78,8 +78,8 @@ public class TileManager : Singleton<TileManager>
 
             for(int i = 0;i < Mathf.Abs(target_y);i++)
             {
-                if (!GameMap[currty_y + (i * offset)][(int)playerPos.x].PlayerMoveAble)
-                    return new Vector2(playerPos.x,currty_y +((i-1)*offset));
+                if (!GameMap[currty_y + ((i+1) * offset)][(int)playerPos.x].PlayerMoveAble)
+                    return new Vector2(playerPos.x,currty_y +(i*offset));
                 return targetPos;
             }
         }
@@ -101,8 +101,8 @@ public class TileManager : Singleton<TileManager>
 
             for (int i = 0; i < Mathf.Abs(target_x); i++)
             {
-                if (!GameMap[(int)playerPos.y][currty_x + (i * offset)].PlayerMoveAble)
-                    return new Vector2(currty_x +((i-1) * offset),playerPos.y);
+                if (!GameMap[(int)playerPos.y][currty_x + ((i+1) * offset)].PlayerMoveAble)
+                    return new Vector2(currty_x +(i * offset),playerPos.y);
                 return targetPos;
             }
         }
