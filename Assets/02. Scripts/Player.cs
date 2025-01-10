@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         InputKey();
-        Moving();
+        //Moving();
     }
     #endregion
     #region Move
@@ -64,9 +64,9 @@ public class Player : MonoBehaviour
             else if (h < 0)
                 pos = Vector2.left;
             if (v > 0)
-                pos = Vector2.up;
-            else if (v < 0)
                 pos = Vector2.down;
+            else if (v < 0)
+                pos = Vector2.up;
 
             MoveStart(pos);
 
@@ -79,8 +79,23 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
+            StartCoroutine("MoveToTarget");
         }
     }
+
+    private IEnumerator MoveToTarget()
+    {
+        while (Vector3.Distance(tf.position, TargetPos) > 0.1f) // 목표 지점 근처까지 이동
+        {
+            // 현재 위치에서 목표 위치로 일정 속도로 이동
+            tf.position = Vector3.MoveTowards(transform.position, TargetPos, MoveSpeed * Time.deltaTime);
+            
+            yield return null; // 다음 프레임까지 대기
+        }
+        tf.position = TargetPos;
+        MoveStop();
+    }
+
     void Moving()
     {
         if(IsMove)
@@ -93,10 +108,12 @@ public class Player : MonoBehaviour
                 MoveStop();
             }
         }
-    }
+    } //삭제해야할것 같음
+
     void MoveStop()
     {
-
+        IsMove = false;
+        CurrtyPos = NextPos;
     }
     void Dash(Vector2 pos)
     {
@@ -107,6 +124,7 @@ public class Player : MonoBehaviour
     {
 
     }
+
     bool MovePositionGet(Vector2 pos)
     {
         // 이동경로가 존재 하지 않을 경우 playerPos 반환하기 

@@ -28,6 +28,7 @@ public class TileManager : Singleton<TileManager>
                 if (Instantiate(tilePrefab).TryGetComponent(out Tile tile))
                 {
                     GameMap[y].Add(tile);
+                    tile.transform.parent = transform;
                 }
                 GameMap[y][x].Init(x, y);
                 GameMap[y][x].transform.position = new Vector3(x, -y, 0) + tileoffset;
@@ -57,6 +58,8 @@ public class TileManager : Singleton<TileManager>
     // 플레이어 이동 경로 체크 
     public Vector2 CheckMoveAble(Vector2 playerPos, Vector2 targetPos)
     {
+        if (targetPos.x == -1 || targetPos.x >= sizeX || targetPos.y == -1 || targetPos.y >= sizeY)
+            return playerPos;
         //Up Down 
         if (playerPos.x == targetPos.x)
         {
@@ -91,7 +94,7 @@ public class TileManager : Singleton<TileManager>
 
             for (int i = 0; i < Mathf.Abs(target_x); i++)
             {
-                if (!GameMap[(int)playerPos.x][currty_x + (i * offset)].PlayerMoveAble)
+                if (!GameMap[(int)playerPos.y][currty_x + (i * offset)].PlayerMoveAble)
                     return playerPos;
                 return targetPos;
             }

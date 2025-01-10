@@ -88,11 +88,21 @@ public class Tile : MonoBehaviour
 
     public void SetAnimTrigger(string param = "SHOT")
     {
+        if (anim == null)
+        {
+            Debug.LogWarning($"{gameObject.name} Animator :: NULL");
+            return;
+        }
         anim.SetTrigger(param);
     }
 
     public void SetAnimInt(float param, string name = "TYPE")
     {
+        if (anim == null)
+        {
+            Debug.LogWarning($"{gameObject.name} Animator :: NULL");
+            return;
+        }
         anim.SetFloat(name, param);
     }
 }
