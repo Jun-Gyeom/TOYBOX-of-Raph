@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
     {
         this.x = x;
         this.y = y;
-        Type = TileType.BASE;
+        SetTileType(TileType.BASE, 0, 0);
     }
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)
@@ -36,15 +36,16 @@ public class Tile : MonoBehaviour
         switch (type)
         {
             case TileType.VOID:
+                PlayerMoveAble = true;
                 break;
             case TileType.BASE:
-
+                PlayerMoveAble = true;
                 break;
             case TileType.SPIKE:
-
+                PlayerMoveAble = true;
                 break;
             case TileType.FALL:
-
+                PlayerMoveAble = true;
                 break;
             default:
                 break;

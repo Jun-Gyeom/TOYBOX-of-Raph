@@ -57,7 +57,45 @@ public class TileManager : Singleton<TileManager>
     // 플레이어 이동 경로 체크 
     public Vector2 CheckMoveAble(Vector2 playerPos, Vector2 targetPos)
     {
+        //Up Down 
+        if (playerPos.x == targetPos.x)
+        {
+            // - = Down / + = Up
+            int target_y = (int)(playerPos.y - targetPos.y);
+            int currty_y = (int)playerPos.y;
+            int offset = 0;
+            if (target_y < 0)
+                offset = 1;
+            else
+                offset = -1;
 
+
+            for(int i = 0;i < Mathf.Abs(target_y);i++)
+            {
+                if (!GameMap[currty_y + (i * offset)][(int)playerPos.x].PlayerMoveAble)
+                    return playerPos;
+                return targetPos;
+            }
+        }
+        else
+        {
+            // - = Right / + = Left
+            int target_x = (int)(playerPos.x - targetPos.x);
+            int currty_x = (int)playerPos.x;
+            int offset = 0;
+            if (target_x < 0)
+                offset = 1;
+            else
+                offset = -1;
+
+
+            for (int i = 0; i < Mathf.Abs(target_x); i++)
+            {
+                if (!GameMap[(int)playerPos.x][currty_x + (i * offset)].PlayerMoveAble)
+                    return playerPos;
+                return targetPos;
+            }
+        }
         return new Vector2();
     }
 

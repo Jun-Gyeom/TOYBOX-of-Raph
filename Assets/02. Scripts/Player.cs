@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     Vector3 TargetPos;
     float MoveDelay;
     bool IsMove;
-    bool MoveAble;
-    float MoveSpeed;
+    bool MoveAble = true;
+    [SerializeField] float MoveSpeed;
     int DashDistance;
     float h, v;
 
@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         {
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
+            Debug.Log("GetKey");
             if (h == 0 && v == 0)
                 return;
 
@@ -73,10 +74,11 @@ public class Player : MonoBehaviour
     }
     void MoveStart(Vector2 pos)
     {
-        if(pos == Vector2.zero || !IsMove || !MoveAble) return;
+        if(pos == Vector2.zero || IsMove || !MoveAble) return;
         if(MovePositionGet(pos))
         {
-           TargetPos = tileManager.GetTileObejctPosition(NextPos);
+            TargetPos = tileManager.GetTileObejctPosition(NextPos);
+            IsMove = true;
         }
     }
     void Moving()
