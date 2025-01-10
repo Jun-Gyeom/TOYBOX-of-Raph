@@ -20,11 +20,13 @@ public class Tile : MonoBehaviour
     private float startupTime;
     private float holdingTime;
 
+
     public void Init(int x, int y)
     {
         this.x = x;
         this.y = y;
-        SetTileType(TileType.BASE, 0, 0);
+        TryGetComponent(out anim);
+        SetTileType(TileType.FALL, 5, 5);
     }
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)
@@ -52,13 +54,14 @@ public class Tile : MonoBehaviour
         }
 
         // 타일 애니메이션 재생 속도 조절
-        SetAnimInt((1f /startupTime), "SPEED");
+        SetAnimInt((1f /startupTime), "STARTUP_SPEED");
 
         // 타일 애니메이션 재생 
         SetAnimInt((float)type);
         SetAnimTrigger();
     }
 
+    #region Event
     public void PlayerHit()
     {
         // 플레이어 위치 가져오기 ( from GameManger ) 
@@ -78,12 +81,23 @@ public class Tile : MonoBehaviour
         StartCoroutine(TileTypeHolding());
     }
 
+    public void SetBaseTile()
+    {
+        SetTileType(TileType.BASE, 0, 0);
+    }
+
+    public void SetPlayerMoveDisable()
+    {
+        PlayerMoveAble = false; 
+    }
+    #endregion
+
     // 타일 변경 홀딩 코루틴 
     private IEnumerator TileTypeHolding()
     {
         yield return new WaitForSeconds(holdingTime);
 
-        SetTileType(TileType.BASE, 0, 0);
+        SetAnimTrigger("END");
     }
 
     public void SetAnimTrigger(string param = "SHOT")
