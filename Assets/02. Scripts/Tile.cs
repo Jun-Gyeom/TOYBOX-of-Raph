@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum TileType
@@ -16,6 +17,8 @@ public class Tile : MonoBehaviour
     private int x;
     private int y;
     private Animator anim;
+    private float startupTime;
+    private float holdingTime;
 
     public void Init(int x, int y)
     {
@@ -24,9 +27,11 @@ public class Tile : MonoBehaviour
         Type = TileType.BASE;
     }
 
-    public void SetTileType(TileType type)
+    public void SetTileType(TileType type, float startupTime, float holdingTime)
     {
         this.Type = type;
+        this.startupTime = startupTime;
+        this.holdingTime = holdingTime;
 
         switch (type)
         {
@@ -45,18 +50,39 @@ public class Tile : MonoBehaviour
                 break;
         }
 
+        // 타일 애니메이션 재생 속도 조절
+        SetAnimInt((1f /startupTime), "SPEED");
+
         // 타일 애니메이션 재생 
-        SetAnimInt((int)type);
+        SetAnimInt((float)type);
         SetAnimTrigger();
     }
 
     public void PlayerHit()
     {
-        // 플레이어 위치 가져오기 
+        // 플레이어 위치 가져오기 ( from GameManger ) 
+        Vector2 playerPos = new Vector2();// = GameManager.Instance.
 
         // 현재 타일 위치 가져오기 
 
-        // 체력 감소 
+        // 위치가 겹치면 체력 감소 
+        if (playerPos.x == this.x && playerPos.y == this.y)
+        {
+
+        }
+    }
+
+    public void StartTileHold()
+    {
+        StartCoroutine(TileTypeHolding());
+    }
+
+    // 타일 변경 홀딩 코루틴 
+    private IEnumerator TileTypeHolding()
+    {
+        yield return new WaitForSeconds(holdingTime);
+
+        SetTileType(TileType.BASE, 0, 0);
     }
 
     public void SetAnimTrigger(string param = "SHOT")
@@ -64,7 +90,7 @@ public class Tile : MonoBehaviour
         anim.SetTrigger(param);
     }
 
-    public void SetAnimInt(int param, string name = "TYPE")
+    public void SetAnimInt(float param, string name = "TYPE")
     {
         anim.SetFloat(name, param);
     }
