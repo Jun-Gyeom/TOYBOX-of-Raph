@@ -10,23 +10,34 @@ public class Player : MonoBehaviour
 
     //Component
     Transform tf;
+    Animator anim;
 
     //Move
+    [Header("MOVE")]
+    [SerializeField] float MoveSpeed;
+    [SerializeField] float DashSpeed;
+    [SerializeField] float ForcingMoveSpeed;
+
     public Vector2 CurrtyPos { get; private set; }
+
     Vector2 NextPos;
     Vector3 TargetPos;
     float MoveDelay;
     bool IsMove;
     bool MoveAble = true;
-    [SerializeField] float MoveSpeed;
-    [SerializeField] float DashSpeed;
     int DashDistance = 2;
     float h, v;
 
     //HP 
-    int CurrtyHP;
+    [Header("HP")]
+    [SerializeField] int CurrtyHP;
     [SerializeField] int MaxHP;
     int DieHP =0;
+
+    //Invincible
+    [Header("INVINCIBLE")]
+    [SerializeField] float HitInvincibleTime;
+    bool OnInvincible;
 
     Animator Anim;
     #region Start
@@ -40,11 +51,13 @@ public class Player : MonoBehaviour
     {
         tileManager = TileManager.Instance;
         tf = transform;
+        anim = GetComponent<Animator>();
     }
 
     private void Init_StartSet()
     {
-
+        CurrtyHP = MaxHP;
+        DieHP = 0;
     }
     #endregion
     #region Update
@@ -133,6 +146,7 @@ public class Player : MonoBehaviour
     {
         IsMove = false;
         CurrtyPos = NextPos;
+        Interactor();
     }
     void DashStart(Vector2 pos, float MoveSpeed)
     {
@@ -145,8 +159,34 @@ public class Player : MonoBehaviour
             StartCoroutine("MoveToTarget", MoveSpeed);
         }
     }
+    //강제 이동 (비타겟팅 - 탐색함)
+    public bool ForcingMove()
+    {
+        List<Vector2> guide = new List<Vector2>() {Vector2.up,Vector2.right,Vector2.down,Vector2.left };
+        for(int i =0; i<guide.Count; i++)
+        {
+            if(ForcingMove(guide[i]))
+                return true;
+        }
+        return false;
+    }
+    //강제 이동 (타겟팅)
+    public bool ForcingMove(Vector2 pos)
+    {
+        if (pos == Vector2.zero)
+            return false;
+        if (MovePositionGet(pos))
+        {
+            TargetPos = tileManager.GetTileObejctPosition(NextPos);
+            IsMove = true;
+            StartCoroutine("MoveToTarget", ForcingMoveSpeed);
+            return true;
+        }
+        return false;
+    }
 
-    void ForcingMove(Vector2 pos)
+    //즉시 강제 이동 
+    public void DirectForcingMove()
     {
 
     }
@@ -168,38 +208,43 @@ public class Player : MonoBehaviour
     #endregion
     #region HP
 
-    bool Heal(int amount)
+    void Heal(int amount = 1)
     {
-        return false;
+        CurrtyHP += amount;
+        if(CurrtyHP > MaxHP)
+            CurrtyHP = MaxHP;   
     }
 
-    bool Damage(int amount)
+    public void Damage(int amount = 1)
     {
-        return false;
+        if (OnInvincible)
+            return;
+        CurrtyHP -= amount;
+        if (CurrtyHP <= 0)
+            Die();
     }
 
     void Die()
     {
-
+        //DieAnimation
     }
     #endregion
 
     #region Interact
 
-    private void Interactor(TileType type)
+    public void Interactor()
     {
+        TileType type = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x].Type;
         switch (type)
         {
             case TileType.VOID:
                 Falling();
                 break;
             case TileType.BASE:
-
+                //없음
                 break;
             case TileType.SPIKE:
-
-                break;
-            case TileType.FALL:
+                Damage();
                 break;
             default:
                 break;
@@ -208,20 +253,33 @@ public class Player : MonoBehaviour
 
     void Falling()
     {
-
+        //1. 떨어짐
+        //2. 떨어짐 완료시 원 위치로 복귀
+        //3. Damage 호출
     }
+
+    //Animation Event Method
+    public void FallingEnd()
+    {
+        
+    }
+
 
     void InvincibleStart(float time)
     {
-
+        OnInvincible = true;
+        //Layer 따로 둬서 애니메이션 실행
+        StartCoroutine("InvincibleDelay", time);
     }
     IEnumerator InvincibleDelay(float time)
     {
         yield return new WaitForSeconds(time);
+        InvincibleEnd();
     }
     void InvincibleEnd()
     {
-
+        //애니메이션 중지
+        OnInvincible = false;
     }
     #endregion
 

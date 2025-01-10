@@ -14,8 +14,7 @@ public class Tile : MonoBehaviour
     public bool PlayerMoveAble { get; private set; }    // 이동 가능한 타일인지 여부 
     public TileType Type { get; private set; }          // 타일 타입 
 
-    private int x;
-    private int y;
+    private Vector2 TilePos;
     private Animator anim;
     private float startupTime;
     private float holdingTime;
@@ -23,10 +22,10 @@ public class Tile : MonoBehaviour
 
     public void Init(int x, int y)
     {
-        this.x = x;
-        this.y = y;
+        TilePos.x = x;
+        TilePos.y = y;
         TryGetComponent(out anim);
-        SetTileType(TileType.FALL, 5, 100);
+        SetTileType(TileType.BASE, 0, 0);
     }
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)
@@ -62,30 +61,32 @@ public class Tile : MonoBehaviour
     }
 
     #region Event
+    //낙석 - 데미지 부여 이벤트 
     public void PlayerHit()
     {
-        // 플레이어 위치 가져오기 ( from GameManger ) 
-        Vector2 playerPos = new Vector2();// = GameManager.Instance.
+        Player player = GameManager.Instance.Player;
+        Vector2 playerPos = player.CurrtyPos;
 
-        // 현재 타일 위치 가져오기 
-
-        // 위치가 겹치면 체력 감소 
-        if (playerPos.x == this.x && playerPos.y == this.y)
+        if (playerPos == TilePos)
         {
-
+            player.Damage();
         }
+        return;
     }
 
+    //타일 타입 지속시간 설정 이벤트
     public void StartTileHold()
     {
         StartCoroutine(TileTypeHolding());
     }
 
+    //타일 타입 Base타입으로 변경 이벤트
     public void SetBaseTile()
     {
         SetTileType(TileType.BASE, 0, 0);
     }
 
+    //Player 해당 타일 이동 가능 유무 비활성화 이벤트
     public void SetPlayerMoveDisable()
     {
         PlayerMoveAble = false; 
