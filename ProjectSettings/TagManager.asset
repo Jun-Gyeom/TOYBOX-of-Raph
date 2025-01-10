@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 433729591
+    locked: 0
+  - name: Tile
+    uniqueID: 1524646279
+    locked: 0
   - name: Player
     uniqueID: 3552635059
     locked: 0

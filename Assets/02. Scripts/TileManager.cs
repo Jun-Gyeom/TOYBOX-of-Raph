@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class TileManager : Singleton<TileManager>
@@ -12,6 +13,10 @@ public class TileManager : Singleton<TileManager>
     [SerializeField] private Vector3 tileoffset;
     //발판간의 간격
     [SerializeField] private Vector2 ScappingSize;
+
+    [Header("Debug")]
+    [Tooltip("Editor상에서 바로 확인을 활성화")]
+    [SerializeField] private bool OnDrawTile;
 
     protected override void Awake()
     {
@@ -116,4 +121,60 @@ public class TileManager : Singleton<TileManager>
     {
         return GameMap[(int)pos.y][(int)pos.x].transform.position;
     }
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (tilePrefab == null || !OnDrawTile) return;
+
+        // Sprite 가져오기
+        SpriteRenderer spriteRenderer = tilePrefab.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null || spriteRenderer.sprite == null) return;
+
+        Sprite sprite = spriteRenderer.sprite;
+        Texture2D texture = sprite.texture;
+
+        // 타일 위치에 Sprite를 그리기
+        for (int y = 0; y < sizeY; y++)
+        {
+            for (int x = 0; x < sizeX; x++)
+            {
+                Vector3 tilePosition = new Vector3(ScappingSize.x * x, ScappingSize.y * (-y), 0) + tileoffset;
+
+                // Sprite를 사각형으로 Scene 뷰에 그리기
+                DrawSprite(sprite, tilePosition, spriteRenderer.color);
+            }
+        }
+    }
+
+    private void DrawSprite(Sprite sprite, Vector3 position, Color color)
+    {
+        if (sprite == null) return;
+
+        // Sprite의 크기와 UV 좌표 계산
+        Vector2 spriteSize = sprite.bounds.size;
+        Rect textureRect = sprite.textureRect;
+        textureRect.x /= sprite.texture.width;
+        textureRect.y /= sprite.texture.height;
+        textureRect.width /= sprite.texture.width;
+        textureRect.height /= sprite.texture.height;
+
+        // Position을 Pixel Perfect로 스냅 처리
+        position.x = Mathf.Round(position.x * 100f) / 100f;
+        position.y = Mathf.Round(position.y * 100f) / 100f;
+
+        // Sprite 그리기
+        Material spriteMaterial = new Material(Shader.Find("Sprites/Default"));
+        spriteMaterial.color = color;
+
+        Graphics.DrawTexture(
+            new Rect(position.x, position.y, spriteSize.x, spriteSize.y),
+            sprite.texture,
+            textureRect,
+            0, 0, 0, 0,
+            color,
+            spriteMaterial
+        );
+    }
+#endif
 }
+
