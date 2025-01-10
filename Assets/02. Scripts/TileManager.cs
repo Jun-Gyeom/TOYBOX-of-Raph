@@ -10,6 +10,8 @@ public class TileManager : Singleton<TileManager>
     [SerializeField] private int sizeY = 5;
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private Vector3 tileoffset;
+    //발판간의 간격
+    [SerializeField] private Vector2 ScappingSize;
 
     protected override void Awake()
     {
@@ -31,7 +33,7 @@ public class TileManager : Singleton<TileManager>
                     tile.transform.parent = transform;
                 }
                 GameMap[y][x].Init(x, y);
-                GameMap[y][x].transform.position = new Vector3(x, -y, 0) + tileoffset;
+                GameMap[y][x].transform.position = new Vector3(ScappingSize.x*x, ScappingSize.y *(-y), 0) + tileoffset;
             }
         }
     }

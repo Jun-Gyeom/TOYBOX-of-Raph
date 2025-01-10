@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,6 +347,7 @@ MonoBehaviour:
   sizeY: 5
   tilePrefab: {fileID: 1189007810354672087, guid: 012e46324c7da254c9060c39158e52a2, type: 3}
   tileoffset: {x: 0, y: 0, z: 0}
+  ScappingSize: {x: 2, y: 2}
 --- !u!4 &1266329273
 Transform:
   m_ObjectHideFlags: 0

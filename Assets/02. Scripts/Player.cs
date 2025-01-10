@@ -113,8 +113,10 @@ public class Player : MonoBehaviour
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
 
-            AnimFloatSet("H", Mathf.Clamp(-1, 1, pos.x * -1));
-            AnimFloatSet("V", Mathf.Clamp(-1, 1, pos.y * -1));
+            if (pos.x != 0)
+                AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
+            if (pos.y != 0)
+                AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
             StartCoroutine("MoveToTarget",MoveSpeed);
         }
     }
@@ -161,8 +163,10 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
-            AnimFloatSet("H", Mathf.Clamp(-1, 1, pos.x * -1));
-            AnimFloatSet("V", Mathf.Clamp(-1, 1, pos.y * -1));
+            if(pos.x != 0)
+                AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
+            if (pos.y != 0)
+                AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
             AnimBoolSet("DASH", true);
             StartCoroutine("MoveToTarget", MoveSpeed);
         }
@@ -276,6 +280,7 @@ public class Player : MonoBehaviour
     void InvincibleStart(float time)
     {
         OnInvincible = true;
+        AnimFloatSet("ONINVINCIBLE",1);
         //Layer 따로 둬서 애니메이션 실행
         StartCoroutine("InvincibleDelay", time);
     }
@@ -288,6 +293,7 @@ public class Player : MonoBehaviour
     {
         //애니메이션 중지
         OnInvincible = false;
+        AnimFloatSet("ONINVINCIBLE", 0);
     }
     #endregion
     #region Animation
