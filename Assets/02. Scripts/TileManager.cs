@@ -44,6 +44,7 @@ public class TileManager : Singleton<TileManager>
         // 3. 이벤트 트리거 함수에서 타일 홀딩 코루틴 호출 
 
         GameMap[y][x].SetTileType(type, startupTime, holdingTime);
+        GameManager.Instance.Player.Interactor();
     }
 
     // 타일 속성 변경 ( 복수 )
@@ -53,6 +54,7 @@ public class TileManager : Singleton<TileManager>
         {
             GameMap[(int)pos[i].y][(int)pos[i].x].SetTileType(type, startupTime, holdingTime);
         }
+        GameManager.Instance.Player.Interactor();
     }
 
     // 플레이어 이동 경로 체크 
@@ -78,9 +80,9 @@ public class TileManager : Singleton<TileManager>
 
             for(int i = 0;i < Mathf.Abs(target_y);i++)
             {
+                Debug.Log(GameMap[currty_y + ((i + 1) * offset)][(int)playerPos.x].PlayerMoveAble + "_" + playerPos+"_" + targetPos);
                 if (!GameMap[currty_y + ((i+1) * offset)][(int)playerPos.x].PlayerMoveAble)
                     return new Vector2(playerPos.x,currty_y +(i*offset));
-                return targetPos;
             }
         }
         else
@@ -103,7 +105,6 @@ public class TileManager : Singleton<TileManager>
             {
                 if (!GameMap[(int)playerPos.y][currty_x + ((i+1) * offset)].PlayerMoveAble)
                     return new Vector2(currty_x +(i * offset),playerPos.y);
-                return targetPos;
             }
         }
         return targetPos;
