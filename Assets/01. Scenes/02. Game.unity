@@ -338,6 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  DashSpeed: 8
 --- !u!212 &1698265091
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     bool IsMove;
     bool MoveAble = true;
     [SerializeField] float MoveSpeed;
-    int DashDistance;
+    [SerializeField] float DashSpeed;
+    int DashDistance = 2;
     float h, v;
 
     //HP 
@@ -49,11 +50,19 @@ public class Player : MonoBehaviour
     #region Move
     void InputKey()
     {
+        bool DashOn = false;
+        if(Input.GetKey(KeyCode.Z))
+        {
+            DashOn = true;  
+        }
         if (Input.anyKeyDown)
         {
+
             h = Input.GetAxisRaw("Horizontal");
             v = Input.GetAxisRaw("Vertical");
             Debug.Log("GetKey");
+
+
             if (h == 0 && v == 0)
                 return;
 
@@ -68,22 +77,26 @@ public class Player : MonoBehaviour
             else if (v < 0)
                 pos = Vector2.up;
 
-            MoveStart(pos);
+
+            if (!DashOn)
+                MoveStart(pos, MoveSpeed);
+            else
+                DashStart(pos,DashSpeed);
 
         }
     }
-    void MoveStart(Vector2 pos)
+    void MoveStart(Vector2 pos,float MoveSpeed)
     {
         if(pos == Vector2.zero || IsMove || !MoveAble) return;
         if(MovePositionGet(pos))
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
-            StartCoroutine("MoveToTarget");
+            StartCoroutine("MoveToTarget",MoveSpeed);
         }
     }
 
-    private IEnumerator MoveToTarget()
+    private IEnumerator MoveToTarget(float MoveSpeed)
     {
         while (Vector3.Distance(tf.position, TargetPos) > 0.1f) // 목표 지점 근처까지 이동
         {
@@ -115,9 +128,16 @@ public class Player : MonoBehaviour
         IsMove = false;
         CurrtyPos = NextPos;
     }
-    void Dash(Vector2 pos)
+    void DashStart(Vector2 pos, float MoveSpeed)
     {
-
+        pos *= DashDistance;
+        if (pos == Vector2.zero || IsMove || !MoveAble) return;
+        if (MovePositionGet(pos))
+        {
+            TargetPos = tileManager.GetTileObejctPosition(NextPos);
+            IsMove = true;
+            StartCoroutine("MoveToTarget", MoveSpeed);
+        }
     }
 
     void ForcingMove(Vector2 pos)

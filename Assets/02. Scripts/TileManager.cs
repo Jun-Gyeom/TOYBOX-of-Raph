@@ -58,11 +58,14 @@ public class TileManager : Singleton<TileManager>
     // 플레이어 이동 경로 체크 
     public Vector2 CheckMoveAble(Vector2 playerPos, Vector2 targetPos)
     {
-        if (targetPos.x == -1 || targetPos.x >= sizeX || targetPos.y == -1 || targetPos.y >= sizeY)
-            return playerPos;
+
         //Up Down 
         if (playerPos.x == targetPos.x)
         {
+            if (targetPos.y < 0)
+                targetPos.y = 0;
+            else if (targetPos.y >= sizeY)
+                targetPos.y = sizeY - 1;
             // - = Down / + = Up
             int target_y = (int)(playerPos.y - targetPos.y);
             int currty_y = (int)playerPos.y;
@@ -76,12 +79,16 @@ public class TileManager : Singleton<TileManager>
             for(int i = 0;i < Mathf.Abs(target_y);i++)
             {
                 if (!GameMap[currty_y + (i * offset)][(int)playerPos.x].PlayerMoveAble)
-                    return playerPos;
+                    return new Vector2(playerPos.x,currty_y +((i-1)*offset));
                 return targetPos;
             }
         }
         else
         {
+            if (targetPos.x < 0)
+                targetPos.x = 0;
+            else if (targetPos.x >= sizeX)
+                targetPos.x = sizeX - 1;
             // - = Right / + = Left
             int target_x = (int)(playerPos.x - targetPos.x);
             int currty_x = (int)playerPos.x;
@@ -95,11 +102,11 @@ public class TileManager : Singleton<TileManager>
             for (int i = 0; i < Mathf.Abs(target_x); i++)
             {
                 if (!GameMap[(int)playerPos.y][currty_x + (i * offset)].PlayerMoveAble)
-                    return playerPos;
+                    return new Vector2(currty_x +((i-1) * offset),playerPos.y);
                 return targetPos;
             }
         }
-        return new Vector2();
+        return targetPos;
     }
 
     public Vector3 GetTileObejctPosition(Vector2 pos)
