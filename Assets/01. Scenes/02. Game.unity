@@ -292,6 +292,10 @@ MonoBehaviour:
   patterns:
   - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
   pageNumber: 0
+  leftThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
+  rightThomasPrefab: {fileID: 4159225669871863161, guid: eec5b22e3eba2164299bbc02664ca13e, type: 3}
+  upThomasPrefab: {fileID: 4159225669871863161, guid: dd02b3ed67cb051479ebb970576ff2d6, type: 3}
+  downThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
 --- !u!4 &1229006796
 Transform:
   m_ObjectHideFlags: 0
@@ -387,7 +391,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   DashSpeed: 8
+  ForcingMoveSpeed: 0
+  CurrtyHP: 0
   MaxHP: 0
+  HitInvincibleTime: 0
 --- !u!212 &1698265091
 SpriteRenderer:
   m_ObjectHideFlags: 0
