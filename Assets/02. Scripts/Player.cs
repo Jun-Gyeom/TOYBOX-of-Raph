@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -111,6 +112,9 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
+
+            AnimFloatSet("H", Mathf.Clamp(-1, 1, pos.x * -1));
+            AnimFloatSet("V", Mathf.Clamp(-1, 1, pos.y * -1));
             StartCoroutine("MoveToTarget",MoveSpeed);
         }
     }
@@ -146,6 +150,7 @@ public class Player : MonoBehaviour
     {
         IsMove = false;
         CurrtyPos = NextPos;
+        AnimBoolSet("DASH", false);
         Interactor();
     }
     void DashStart(Vector2 pos, float MoveSpeed)
@@ -156,6 +161,9 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
+            AnimFloatSet("H", Mathf.Clamp(-1, 1, pos.x * -1));
+            AnimFloatSet("V", Mathf.Clamp(-1, 1, pos.y * -1));
+            AnimBoolSet("DASH", true);
             StartCoroutine("MoveToTarget", MoveSpeed);
         }
     }
@@ -282,5 +290,14 @@ public class Player : MonoBehaviour
         OnInvincible = false;
     }
     #endregion
-
+    #region Animation
+    private void AnimFloatSet(string name,float value)
+    {
+        anim.SetFloat(name, value);
+    }
+    private void AnimBoolSet(string name,bool value)
+    {
+        anim.SetBool(name, value);
+    }
+    #endregion
 }
