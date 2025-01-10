@@ -7,16 +7,16 @@ using UnityEngine;
 public class TileSetData
 {
     [Header("공통")]
-    [SerializeField] private float coolDownTime; 
+    public float coolDownTime; 
 
     [Header("타일 상태 변환")]
-    [SerializeField] private bool useTile;
-    [SerializeField] private List<Vector2> tilePositions;
-    [SerializeField] private TileType type;
-    [SerializeField] private float startupTime;
-    [SerializeField] private int holdingTime;
+    public bool useTile;
+    public List<Vector2> tilePositions;
+    public TileType type;
+    public float startupTime;
+    public int holdingTime;
 
     [Header("기차 출현")]
-    [SerializeField] private bool useTrail;
-    [SerializeField] private List<Trail> trails;
+    public bool useTrail;
+    public List<Trail> trails;
 }
