@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO/Pattern")]
+[CreateAssetMenu(menuName = "SO/Pattern")]
 public class Pattern : ScriptableObject 
 {
-    [SerializeField] private List<TileSetData> tilesets;
-    [SerializeField] private int startPatternNum;
-    [SerializeField] private float coolDownTime; 
+    public List<TileSetData> tilesets;
+    public int startPatternNum;
+    public float coolDownTime; 
 }
