@@ -7,10 +7,17 @@ public class BossManager : Singleton<BossManager>
     [SerializeField] private List<Pattern> patterns;
     [SerializeField] private int pageNumber;
 
+    [Header("Thomas Prefabs")]
     [SerializeField] private GameObject leftThomasPrefab;
     [SerializeField] private GameObject rightThomasPrefab;
     [SerializeField] private GameObject upThomasPrefab;
     [SerializeField] private GameObject downThomasPrefab;
+
+    [Header("Fast Thomas Prefabs")]
+    [SerializeField] private GameObject leftFastThomasPrefab;
+    [SerializeField] private GameObject rightFastThomasPrefab;
+    [SerializeField] private GameObject upFastThomasPrefab;
+    [SerializeField] private GameObject downFastThomasPrefab;
 
     protected override void Awake()
     {
@@ -53,23 +60,49 @@ public class BossManager : Singleton<BossManager>
     public void CreateThomas(TrailData traildata)
     {
         Trail trail = null;
-        switch (traildata.hv)
+
+        if (traildata.isFast)
         {
-            case HV.LEFT:
-                Instantiate(leftThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
-                break;
-            case HV.RIGHT:
-                Instantiate(rightThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
-                break;
-            case HV.UP:
-                Instantiate(upThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
-                break;
-            case HV.DOWN:
-                Instantiate(downThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
-                break;
-            default:
-                break;
+            switch (traildata.hv)
+            {
+                case HV.LEFT:
+                    Instantiate(leftFastThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.RIGHT:
+                    Instantiate(rightFastThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.UP:
+                    Instantiate(upFastThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.DOWN:
+                    Instantiate(downFastThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                default:
+                    break;
+            }
         }
+
+        else
+        {
+            switch (traildata.hv)
+            {
+                case HV.LEFT:
+                    Instantiate(leftThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.RIGHT:
+                    Instantiate(rightThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.UP:
+                    Instantiate(upThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                case HV.DOWN:
+                    Instantiate(downThomasPrefab, new Vector3(traildata.pos.x, traildata.pos.y, 0), Quaternion.identity).TryGetComponent(out trail);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         trail?.Shot(traildata.speed);
     }
 }

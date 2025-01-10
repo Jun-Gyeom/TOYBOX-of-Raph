@@ -18,11 +18,32 @@ MonoBehaviour:
     tilePositions:
     - {x: 5, y: 4}
     - {x: 5, y: 3}
+    - {x: 6, y: 1}
+    - {x: 3, y: 1}
+    - {x: 2, y: 0}
+    - {x: 8, y: 0}
+    - {x: 6, y: 0}
+    - {x: 8, y: 2}
+    - {x: 9, y: 3}
+    - {x: 2, y: 2}
+    - {x: 1, y: 3}
     type: 3
     startupTime: 2
     holdingTime: 1
-    useTrail: 0
-    trails: []
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 3, y: 3}
+      hv: 0
+      speed: 250
+    - isFast: 0
+      pos: {x: 3, y: 1}
+      hv: 0
+      speed: 250
+    - isFast: 0
+      pos: {x: 3, y: 3}
+      hv: 2
+      speed: 250
   - coolDownTime: 1
     useTile: 1
     tilePositions:
@@ -41,6 +62,38 @@ MonoBehaviour:
     type: 3
     startupTime: 8
     holdingTime: 8
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
     useTrail: 0
     trails: []
   startPatternNum: 0

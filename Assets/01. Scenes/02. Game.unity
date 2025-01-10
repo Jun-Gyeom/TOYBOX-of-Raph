@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,6 +296,10 @@ MonoBehaviour:
   rightThomasPrefab: {fileID: 4159225669871863161, guid: eec5b22e3eba2164299bbc02664ca13e, type: 3}
   upThomasPrefab: {fileID: 4159225669871863161, guid: dd02b3ed67cb051479ebb970576ff2d6, type: 3}
   downThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
+  leftFastThomasPrefab: {fileID: 4159225669871863161, guid: 4ff747dd1dd85eb4baad7a0614316e8b, type: 3}
+  rightFastThomasPrefab: {fileID: 4159225669871863161, guid: ac45cb616ef96144fa543503d09e591a, type: 3}
+  upFastThomasPrefab: {fileID: 4159225669871863161, guid: db49204b2421969439cfe859dfa4ab55, type: 3}
+  downFastThomasPrefab: {fileID: 4159225669871863161, guid: 4e4c482914a7c0d44991e042c1a202db, type: 3}
 --- !u!4 &1229006796
 Transform:
   m_ObjectHideFlags: 0
