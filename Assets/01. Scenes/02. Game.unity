@@ -1134,7 +1134,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
   - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
   - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
-  bossAnim: {fileID: 0}
+  bossAnim: {fileID: 1783913213}
   LeftThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
   RightThomasPrefab: {fileID: 4159225669871863161, guid: 1775f965a1dd95048972ab253257ac3a, type: 3}
   DownThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
