@@ -255,6 +255,10 @@ public class Player : MonoBehaviour
             return;
         CurrtyHP -= amount;
         InvincibleStart(HitInvincibleTime);
+
+        // 카메라 흔들림 
+        GameManager.Instance.ShakeCamera(0.5f, 0.3f);
+
         if (CurrtyHP <= 0)
             Die();
     }
