@@ -38,8 +38,31 @@ public class UIManager : Singleton<UIManager>
     }
     #endregion
 
-    // 체력 UI 업데이트
-    public void UpdateHealthUI(int amount)
+    #region Pause
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PausePanel.activeSelf)
+            Pause();
+    }
+    public void Pause()
+    {
+        PausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void Continue()
+    {
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        PausePanel.SetActive(false);
+    }
+    public void Exit()
+    {
+        StartCoroutine(GameManager.Instance.ChangeScene("01. Main",2,2));
+    }
+#endregion
+
+// 체력 UI 업데이트
+public void UpdateHealthUI(int amount)
     {
         for (int i = 0; i < healths.Count; i++)
         {
@@ -97,6 +120,7 @@ public class UIManager : Singleton<UIManager>
             yield return null;
         }
     }
+
 
     // 화면 페이드아웃
     public IEnumerator FadeOut(float duration)

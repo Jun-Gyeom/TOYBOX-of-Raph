@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -11,6 +12,17 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Audio Clips")]
     public AudioClip[] bgmClips; // 배경음악 클립 배열
     public AudioClip[] sfxClips; // 효과음 클립 배열
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    public void SceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        Debug.Log("LOADED");
+    }
 
     /// <summary>
     /// 배경음악 재생
