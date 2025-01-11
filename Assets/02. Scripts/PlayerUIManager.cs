@@ -37,6 +37,7 @@ public class PlayerUIManager : MonoBehaviour
     // 현재 페이즈 UI 업데이트
     public void UpdatePageText(int pageNum)
     {
+        pageNum++;
         pageText.text = $"Page {pageNum.ToString()}";
     }
 
