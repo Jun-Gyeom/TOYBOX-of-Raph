@@ -5,9 +5,8 @@ using UnityEngine;
 public class BossManager : Singleton<BossManager>
 {
     public int CurrentPhase { get; private set; } = 0;
-    [SerializeField] private List<Pattern> patterns;
+    [SerializeField] private List<Phase> phases;
     [SerializeField] private Animator bossAnim;
-    private float coolDownTime;
 
     [Header("Thomas Prefabs")]
     [SerializeField] private GameObject LeftThomasPrefab;
@@ -17,50 +16,54 @@ public class BossManager : Singleton<BossManager>
 
     protected override void Awake()
     {
-        StartPattern(patterns[CurrentPhase]);
+        StartPhase(phases[CurrentPhase]);
     }
 
-    // 패턴(페이지) 시작 메서드 
-    public void StartPattern(Pattern pattern)
+    // 페이즈 시작 메서드 
+    public void StartPhase(Phase phase)
     {
-        coolDownTime = pattern.coolDownTime;
-
         // 패턴 읽기 시작 
-        StartCoroutine(ReadTileSets(pattern.tilesets));
+        StartCoroutine(ReadPatterns(phase.patterns));
     }
 
     // 패턴 읽고 실행 메서드 
-    private IEnumerator ReadTileSets(List<TileSetData> tilesets)
+    private IEnumerator ReadPatterns(List<Pattern> patterns)
     {
-        foreach (TileSetData tileset in tilesets)
+        // 현제 페이즈의 모든 패턴 읽기
+        foreach (Pattern pattern in patterns)
         {
-            // 쿨다운 대기 
-            yield return new WaitForSeconds(tileset.coolDownTime);
-
-            // 기차 출현
-            if (tileset.useTrail)
+            // 현재 패턴의 모든 타일 변경 데이터 읽기 
+            foreach (TileSetData tileset in pattern.tilesets)
             {
-                for (int i = 0; i < tileset.trails.Count; i++)
+                // 쿨다운 대기 
+                yield return new WaitForSeconds(tileset.coolDownTime);
+
+                // 기차 출현
+                if (tileset.useTrail)
                 {
-                    CreateThomas(tileset.trails[i]);
+                    for (int i = 0; i < tileset.trails.Count; i++)
+                    {
+                        CreateThomas(tileset.trails[i]);
+                    }
+                }
+
+                // 타일 상태 변환
+                if (tileset.useTile)
+                {
+                    TileManager.Instance.SetTileType(tileset.tilePositions, tileset.type, tileset.startupTime, tileset.holdingTime);
+                }
+
+                // 보스 애니메이션 재생
+                if (tileset.playAttackAnim)
+                {
+                    bossAnim.Play("Attack");
                 }
             }
 
-            // 타일 상태 변환
-            if (tileset.useTile)
-            {
-                TileManager.Instance.SetTileType(tileset.tilePositions, tileset.type, tileset.startupTime, tileset.holdingTime);
-            }
-
-            // 보스 애니메이션 재생
-            if (tileset.playAttackAnim)
-            {
-                bossAnim.Play("Attack");
-            }
+            // 패턴 이후 쉬는 시간 
+            yield return new WaitForSeconds(pattern.coolDownTime);
         }
 
-        // 페이즈 쉬는 시간 
-        yield return new WaitForSeconds(coolDownTime);
 
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
 

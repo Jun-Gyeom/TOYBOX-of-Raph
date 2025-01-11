@@ -553,12 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41316cf039ed7ab47870f39475d4ed28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patterns:
-  - {fileID: 11400000, guid: 10c539951be91ac4aa6de9fabb8f9f5c, type: 2}
-  - {fileID: 11400000, guid: 007a1c5486133af43889de23982449b9, type: 2}
-  - {fileID: 11400000, guid: 91a6145f1aa131f458b7379dfe4745c5, type: 2}
-  - {fileID: 11400000, guid: 9c2d0991496e68b418436d60cece60e4, type: 2}
-  - {fileID: 11400000, guid: 22a0709ead9ce9f448f5e7f6b20e0787, type: 2}
+  phases:
+  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
   bossAnim: {fileID: 0}
   LeftThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
   RightThomasPrefab: {fileID: 4159225669871863161, guid: 1775f965a1dd95048972ab253257ac3a, type: 3}

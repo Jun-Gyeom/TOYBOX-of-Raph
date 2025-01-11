@@ -6,6 +6,5 @@ using UnityEngine;
 public class Pattern : ScriptableObject 
 {
     public List<TileSetData> tilesets = new List<TileSetData>();
-    public int startPatternNum;
     public float coolDownTime; 
 }
