@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4282069724462723936}
   m_Layer: 0
   m_Name: RightTomas
-  m_TagString: Untagged
+  m_TagString: Trail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

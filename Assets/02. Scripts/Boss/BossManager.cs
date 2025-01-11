@@ -13,6 +13,9 @@ public class BossManager : Singleton<BossManager>
     [SerializeField] private GameObject RightThomasPrefab;
     [SerializeField] private GameObject DownThomasPrefab;
 
+    [Header("Warning Line")]
+    [SerializeField] private TrailLine LinePrefab;
+
     [Header("Dialogue Systems")]
     [SerializeField] private List<DialogSystem> dialogueSystems;
 
@@ -115,6 +118,9 @@ public class BossManager : Singleton<BossManager>
                 break;
         }
         Vector3 ObjectPosition = TileManager.Instance.GetTileObejctPosition(TilePos);
+
+        TrailLine Tline = Instantiate(LinePrefab);
+        Tline.Init(ObjectPosition, traildata.hv);
 
         switch (traildata.hv)
         {

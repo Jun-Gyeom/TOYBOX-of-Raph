@@ -315,8 +315,12 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("DIE!!!!!!!!!!!!!!!!!!!");
         AnimTriggerSet("DIE");
+    }
+
+    public void DieEnd()
+    {
+        gameObject.SetActive(false);
     }
     #endregion
 
