@@ -14,6 +14,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] GameObject fadePanel;          // 페이드 패널 게임오브젝트
     [SerializeField] Image fadeImage;               // 페이드 이미지 
     [SerializeField] GameObject optionPanel;        // 설정 창 
+    [SerializeField] GameObject PausePanel;
 
     #region Main Menu
     public void GameStart()

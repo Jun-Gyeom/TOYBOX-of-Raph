@@ -97,7 +97,8 @@ public class Player : MonoBehaviour
             Immortal(immortalDuration);
         }
 
-        if(Input.GetKey(KeyCode.Z) && DashStack > 0)
+        // 대쉬 권능 여부 
+        if (Input.GetKey(KeyCode.Z) && DashStack > 0 && PlayerAbility.dashAble)
         {
             DashOn = true;  
         }
@@ -325,6 +326,7 @@ public class Player : MonoBehaviour
 
     public void DieEnd()
     {
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
     #endregion
