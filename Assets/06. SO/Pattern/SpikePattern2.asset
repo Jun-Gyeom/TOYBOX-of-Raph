@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilesets:
   - coolDownTime: 0.4
-    playAttackAnim: 0
+    playAttackAnim: 1
     useTile: 1
     tilePositions:
     - {x: 1, y: 0}

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,10 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -373,17 +372,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &802313091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7344681715397104627, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
-  m_PrefabInstance: {fileID: 7403830575299032397}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1136074757 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
@@ -415,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 4948827998486269178, guid: 2255145cdd6464e4ebb36ffee3250cd2, type: 3}
       propertyPath: speakers.Array.data[0].textDialogue
       value: 
-      objectReference: {fileID: 802313091}
+      objectReference: {fileID: 0}
     - target: {fileID: 4948827998486269178, guid: 2255145cdd6464e4ebb36ffee3250cd2, type: 3}
       propertyPath: speakers.Array.data[0].spriteRenderer
       value: 
@@ -528,7 +516,7 @@ PrefabInstance:
     - target: {fileID: 7153839576483593680, guid: 54f434d83520d30439b80a56869a0271, type: 3}
       propertyPath: speakers.Array.data[0].textDialogue
       value: 
-      objectReference: {fileID: 802313091}
+      objectReference: {fileID: 0}
     - target: {fileID: 7153839576483593680, guid: 54f434d83520d30439b80a56869a0271, type: 3}
       propertyPath: speakers.Array.data[0].spriteRenderer
       value: 
@@ -553,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 70265054531519833, guid: 16fe93e8cd350b94bb21f8b49cbabf7d, type: 3}
       propertyPath: speakers.Array.data[0].textDialogue
       value: 
-      objectReference: {fileID: 802313091}
+      objectReference: {fileID: 0}
     - target: {fileID: 70265054531519833, guid: 16fe93e8cd350b94bb21f8b49cbabf7d, type: 3}
       propertyPath: speakers.Array.data[0].spriteRenderer
       value: 
@@ -763,7 +751,7 @@ PrefabInstance:
     - target: {fileID: 9127601768537935202, guid: ee4c5156c2b93654692719f87e9c3ce6, type: 3}
       propertyPath: speakers.Array.data[0].textDialogue
       value: 
-      objectReference: {fileID: 802313091}
+      objectReference: {fileID: 0}
     - target: {fileID: 9127601768537935202, guid: ee4c5156c2b93654692719f87e9c3ce6, type: 3}
       propertyPath: speakers.Array.data[0].spriteRenderer
       value: 
