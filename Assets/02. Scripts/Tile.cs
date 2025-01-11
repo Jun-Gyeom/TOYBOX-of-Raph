@@ -123,7 +123,8 @@ public class Tile : MonoBehaviour
     public void SetInteractionAble()
     {
         InteractionAble = true;
-        GameManager.Instance.Player.Interactor();
+        if(GameManager.Instance.Player != null) 
+            GameManager.Instance.Player.Interactor();
     }
     
     public void SetIteractionDisAble()
