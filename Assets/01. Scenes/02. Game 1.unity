@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patterns:
-  - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
+  - {fileID: 11400000, guid: 63f3e61aa9d515a43b86f8994aca5cab, type: 2}
   pageNumber: 0
   bossAnim: {fileID: 0}
   HorizontalThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}

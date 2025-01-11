@@ -84,7 +84,7 @@ AnimationClip:
   m_Events:
   - time: 0.8333333
     functionName: SetInteractionAble
-    data: true
+    data: TRUE
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

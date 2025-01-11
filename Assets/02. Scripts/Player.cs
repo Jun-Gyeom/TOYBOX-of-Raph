@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     void InputKey()
     {
         bool DashOn = false;
-        if(Input.GetKey(KeyCode.Z))
+        if(Input.GetKey(KeyCode.Z) && DashStack > 0)
         {
             DashOn = true;  
         }
@@ -261,6 +261,7 @@ public class Player : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("DIE!!!!!!!!!!!!!!!!!!!");
         AnimTriggerSet("DIE");
     }
     #endregion
@@ -268,7 +269,10 @@ public class Player : MonoBehaviour
     #region Interact
     public void Interactor()
     {
-        TileType type = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x].Type;
+        Tile tile = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x];
+        if (!tile.InteractionAble)
+            return;
+        TileType type = tile.Type;
         switch (type)
         {
             case TileType.VOID:
@@ -279,6 +283,10 @@ public class Player : MonoBehaviour
                 break;
             case TileType.SPIKE:
                 Damage();
+                break;
+            case TileType.FALL:
+                Damage();
+                ForcingMove();
                 break;
             default:
                 break;

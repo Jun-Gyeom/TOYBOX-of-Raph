@@ -112,7 +112,7 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6298260631274396910}
-    m_Position: {x: 250, y: 120, z: 0}
+    m_Position: {x: 260, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6620025624856918967}
     m_Position: {x: 340, y: -60, z: 0}
@@ -153,7 +153,7 @@ AnimatorState:
   m_SpeedParameter: STARTUP_SPEED
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: STARTUP_SPEED
 --- !u!206 &-114011600359770415
 BlendTree:
   m_ObjectHideFlags: 1
@@ -224,7 +224,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: TYPE
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -263,7 +263,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 1
+  m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
@@ -272,7 +272,7 @@ AnimatorState:
   m_SpeedParameter: HOLDING_SPEED
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: STARTUP_SPEED
 --- !u!1101 &7532253885159229379
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

@@ -100,13 +100,21 @@ public class Tile : MonoBehaviour
     {
         PlayerMoveAble = false; 
     }
+    public void SetPlayerMoveAble()
+    {
+        PlayerMoveAble = true;
+    }
     #endregion
 
-    public void SetInteractionAble(string interationable)
+    public void SetInteractionAble()
     {
-        InteractionAble = Boolean.Parse(interationable);
-        if (InteractionAble && PlayerPosCompare())
-            GameManager.Instance.Player.Interactor();
+        InteractionAble = true;
+        GameManager.Instance.Player.Interactor();
+    }
+
+    public void SetIteractionDisAble()
+    {
+        InteractionAble = false;
     }
 
     // 타일 변경 홀딩 코루틴 
@@ -133,6 +141,7 @@ public class Tile : MonoBehaviour
             Debug.LogWarning($"{gameObject.name} Animator :: NULL");
             return;
         }
+        Debug.Log(param);
         anim.SetFloat(name, param);
     }
 }
