@@ -7,7 +7,8 @@ using UnityEngine;
 public class TileSetData
 {
     [Header("공통")]
-    public float coolDownTime; 
+    public float coolDownTime;
+    public bool playAttackAnim;
 
     [Header("타일 상태 변환")]
     public bool useTile;

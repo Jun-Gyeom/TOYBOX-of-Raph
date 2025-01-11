@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilesets:
   - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 0, y: 0}
@@ -39,6 +40,7 @@ MonoBehaviour:
       hv: 2
       speed: 250
   - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 5, y: 1}
@@ -52,6 +54,7 @@ MonoBehaviour:
     useTrail: 0
     trails: []
   - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 0, y: 2}
@@ -65,6 +68,7 @@ MonoBehaviour:
     useTrail: 0
     trails: []
   - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 5, y: 3}
@@ -94,6 +98,7 @@ MonoBehaviour:
       hv: 3
       speed: 500
   - coolDownTime: 0
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 4, y: 2}
@@ -106,6 +111,7 @@ MonoBehaviour:
     useTrail: 0
     trails: []
   - coolDownTime: 0
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -114,6 +120,7 @@ MonoBehaviour:
     useTrail: 0
     trails: []
   - coolDownTime: 0
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0

@@ -6,6 +6,7 @@ public class BossManager : Singleton<BossManager>
 {
     [SerializeField] private List<Pattern> patterns;
     [SerializeField] private int pageNumber;
+    [SerializeField] private Animator bossAnim;
 
     [Header("Thomas Prefabs")]
     [SerializeField] private GameObject HorizontalThomasPrefab;
@@ -45,6 +46,12 @@ public class BossManager : Singleton<BossManager>
             if (tileset.useTile)
             {
                 TileManager.Instance.SetTileType(tileset.tilePositions, tileset.type, tileset.startupTime, tileset.holdingTime);
+            }
+
+            // 보스 애니메이션 재생
+            if (tileset.playAttackAnim)
+            {
+                bossAnim.Play("Attack");
             }
         }
     }
