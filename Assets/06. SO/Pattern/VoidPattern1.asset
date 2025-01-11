@@ -278,4 +278,13 @@ MonoBehaviour:
     holdingTime: 0.35
     useTrail: 0
     trails: []
+  - coolDownTime: 1.5
+    playAttackAnim: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 0
+    trails: []
   coolDownTime: 0
