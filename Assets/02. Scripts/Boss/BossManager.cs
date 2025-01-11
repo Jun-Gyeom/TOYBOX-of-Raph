@@ -8,16 +8,9 @@ public class BossManager : Singleton<BossManager>
     [SerializeField] private int pageNumber;
 
     [Header("Thomas Prefabs")]
-    [SerializeField] private GameObject ThomasPrefab;
-    //[SerializeField] private GameObject rightThomasPrefab;
-    //[SerializeField] private GameObject upThomasPrefab;
-    //[SerializeField] private GameObject downThomasPrefab;
+    [SerializeField] private GameObject HorizontalThomasPrefab;
+    [SerializeField] private GameObject DownThomasPrefab;
 
-    [Header("Fast Thomas Prefabs")]
-    [SerializeField] private GameObject leftFastThomasPrefab;
-    [SerializeField] private GameObject rightFastThomasPrefab;
-    [SerializeField] private GameObject upFastThomasPrefab;
-    [SerializeField] private GameObject downFastThomasPrefab;
 
     protected override void Awake()
     {
@@ -79,16 +72,17 @@ public class BossManager : Singleton<BossManager>
                 break;
         }
         Vector3 ObjectPosition = TileManager.Instance.GetTileObejctPosition(TilePos);
-        if (traildata.isFast)
-        {
-            Instantiate(downFastThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
-        }
 
-        else
+        switch (traildata.hv)
         {
-            Instantiate(ThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
+            case HV.LEFT:
+            case HV.RIGHT:
+                Instantiate(HorizontalThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
+                break;
+            case HV.DOWN:
+                Instantiate(DownThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
+                break;
         }
-
-        trail?.Shot(traildata.speed, traildata.hv);
+        trail?.Shot(traildata.speed, traildata.hv,traildata.isFast);
     }
 }

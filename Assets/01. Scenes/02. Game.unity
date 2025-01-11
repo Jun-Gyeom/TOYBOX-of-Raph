@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621b088c0787bb14098e089a26254782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 225919016}
-  sfxSourcePrefab: {fileID: 6653218376349521586, guid: 49b1f63b01baeea49bb4a0c1c7f435ae, type: 3}
+  bgmSource: {fileID: 0}
+  sfxSourcePrefab: {fileID: 0}
   bgmClips: []
   sfxClips: []
 --- !u!82 &225919016
@@ -437,11 +436,8 @@ MonoBehaviour:
   patterns:
   - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
   pageNumber: 0
-  ThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
-  leftFastThomasPrefab: {fileID: 4159225669871863161, guid: 4ff747dd1dd85eb4baad7a0614316e8b, type: 3}
-  rightFastThomasPrefab: {fileID: 4159225669871863161, guid: ac45cb616ef96144fa543503d09e591a, type: 3}
-  upFastThomasPrefab: {fileID: 4159225669871863161, guid: db49204b2421969439cfe859dfa4ab55, type: 3}
-  downFastThomasPrefab: {fileID: 4159225669871863161, guid: 4e4c482914a7c0d44991e042c1a202db, type: 3}
+  HorizontalThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
+  DownThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
 --- !u!4 &1229006796
 Transform:
   m_ObjectHideFlags: 0
@@ -603,9 +599,11 @@ GameObject:
   - component: {fileID: 1698265091}
   - component: {fileID: 1698265093}
   - component: {fileID: 1698265090}
+  - component: {fileID: 1698265094}
+  - component: {fileID: 1698265095}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,6 +623,7 @@ MonoBehaviour:
   StartPos: {x: 5, y: 3}
   MoveSpeed: 10
   DashSpeed: 18
+  MaxDashStack: 3
   ForcingMoveSpeed: 20
   CurrtyHP: 0
   MaxHP: 3
@@ -717,6 +716,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1698265094
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698265089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.10824084, y: 1.2672675}
+  m_Size: {x: 1.2736979, y: 2.8945346}
+  m_Direction: 0
+--- !u!50 &1698265095
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698265089}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
