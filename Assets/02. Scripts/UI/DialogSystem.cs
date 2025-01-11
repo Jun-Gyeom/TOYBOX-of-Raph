@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Rendering;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +38,7 @@ public class DialogSystem : MonoBehaviour
 
         IsActive = true;
         StartCoroutine(DialoguePanelFadeIn(0.5f));
-        characterImage.sprite = dialogs[currentDialogIndex].characterImage.sprite;
+        characterImage.sprite = dialogs[currentDialogIndex].characterImage;
 
         NextDialogue();
     }
@@ -131,7 +129,7 @@ public class DialogSystem : MonoBehaviour
     [System.Serializable]
     public struct DialogData
     {
-        public Image characterImage;                // 캐릭터 이미지
+        public Sprite characterImage;               // 캐릭터 이미지
         [TextArea(3, 5)] public string dialogue;    // 대사	
     }
 }
