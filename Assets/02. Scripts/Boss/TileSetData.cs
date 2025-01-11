@@ -18,5 +18,5 @@ public class TileSetData
 
     [Header("기차 출현")]
     public bool useTrail;
-    public List<TrailData> trails;
+    public List<TrailData> trails = new List<TrailData>();
 }
