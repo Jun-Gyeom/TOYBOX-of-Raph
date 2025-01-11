@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilesets:
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -24,8 +25,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -36,8 +38,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 1, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -48,8 +51,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 2, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -60,8 +64,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 3, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -72,8 +77,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 4, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -84,8 +90,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 5, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -96,8 +103,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 6, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -108,8 +116,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 7, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -120,8 +129,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 9, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -132,8 +142,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 8, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -144,8 +155,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 7, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -156,8 +168,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 6, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -168,8 +181,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 5, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -180,8 +194,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 4, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -192,8 +207,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 3, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -204,8 +220,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 2, y: 0}
       hv: 3
-      speed: 500
+      speed: 2000
   - coolDownTime: 0.3
+    playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 2, y: 0}
@@ -230,8 +247,82 @@ MonoBehaviour:
     - {x: 8, y: 4}
     - {x: 8, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
+    holdingTime: 8
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 0, y: 3}
+    - {x: 0, y: 4}
+    type: 3
+    startupTime: 1
+    holdingTime: 7
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    type: 3
+    startupTime: 1
+    holdingTime: 6
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    type: 3
+    startupTime: 1
     holdingTime: 5
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 5, y: 4}
+    - {x: 6, y: 4}
+    - {x: 6, y: 3}
+    type: 3
+    startupTime: 1
+    holdingTime: 4
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 3, y: 2}
+    - {x: 4, y: 3}
+    type: 3
+    startupTime: 1
+    holdingTime: 3
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 4, y: 0}
+    - {x: 4, y: 1}
+    - {x: 5, y: 0}
+    type: 3
+    startupTime: 1
+    holdingTime: 2
     useTrail: 0
     trails: []
   startPatternNum: 0

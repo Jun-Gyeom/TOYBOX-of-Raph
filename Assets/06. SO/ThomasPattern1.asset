@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ThomasPattern1
   m_EditorClassIdentifier: 
   tilesets:
-  - coolDownTime: 0
+  - coolDownTime: 1
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -24,24 +25,25 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 2, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 4, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 6, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 8, y: 0}
       hv: 3
-      speed: 1000
-  - coolDownTime: 0.8
+      speed: 2000
+  - coolDownTime: 1.2
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -52,22 +54,22 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 1, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 3, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 5, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 7, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
     - isFast: 0
       pos: {x: 9, y: 0}
       hv: 3
-      speed: 1000
+      speed: 2000
   startPatternNum: 0
   coolDownTime: 0

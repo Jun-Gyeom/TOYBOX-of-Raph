@@ -793,8 +793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPos: {x: 5, y: 3}
-  MoveSpeed: 10
-  DashSpeed: 18
+  MoveSpeed: 25
+  DashSpeed: 50
   MaxDashStack: 3
   ForcingMoveSpeed: 20
   CurrtyHP: 0

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ThomasPattern2
   m_EditorClassIdentifier: 
   tilesets:
-  - coolDownTime: 0.3
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -24,8 +25,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -36,8 +38,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -48,8 +51,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 1}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -60,8 +64,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 3}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -72,8 +77,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -84,8 +90,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 4}
       hv: 1
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -96,8 +103,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 3}
       hv: 0
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -108,8 +116,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 1}
       hv: 0
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -120,8 +129,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 0
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -132,8 +142,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 4}
       hv: 0
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -144,8 +155,9 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 0
-      speed: 1000
-  - coolDownTime: 0.3
+      speed: 2000
+  - coolDownTime: 0.8
+    playAttackAnim: 0
     useTile: 0
     tilePositions: []
     type: 0
@@ -156,6 +168,6 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 0
-      speed: 1000
+      speed: 2000
   startPatternNum: 0
   coolDownTime: 0
