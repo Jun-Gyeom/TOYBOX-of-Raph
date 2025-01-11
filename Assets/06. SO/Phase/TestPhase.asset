@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cff1ceac5f744f4884b49f6f7f3cd32, type: 3}
   m_Name: TestPhase
   m_EditorClassIdentifier: 
+  ability:
+    dashAble: 1
+    immortalAble: 1
   patterns:
   - {fileID: 11400000, guid: 91a6145f1aa131f458b7379dfe4745c5, type: 2}
   - {fileID: 11400000, guid: 10c539951be91ac4aa6de9fabb8f9f5c, type: 2}

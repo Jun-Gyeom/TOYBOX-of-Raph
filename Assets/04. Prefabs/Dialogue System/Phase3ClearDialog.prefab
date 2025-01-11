@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5475442454628325557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3008639068387335442}
+  - component: {fileID: 9127601768537935202}
+  m_Layer: 0
+  m_Name: Phase3ClearDialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3008639068387335442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475442454628325557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 491.58322, y: 234.1717, z: -2.5094204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9127601768537935202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475442454628325557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c053f7879314bb4c99ef03b2bed20a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakers:
+  - spriteRenderer: {fileID: 0}
+    imageDialog: {fileID: 0}
+    textDialogue: {fileID: 0}
+  dialogs:
+  - speakerIndex: 0
+    dialogue: "\uBC84\uD17C\uB098\uACE0?! \uB9D0\uB3C4 \uC548\uB3FC \uACE0\uC791
+      \uC778\uAC04\uC774 \uB0B4 \uC7A5\uB09C\uC744?"
+  - speakerIndex: 0
+    dialogue: "\uC774\uAC74 \uBC18\uCE59\uC774\uC57C! \uC774  #@%$ \uAC10\uD788 \uC2E0\uC131\uD55C
+      \uB180\uC74C\uC5D0 \uBE44\uAC81\uD55C \uC218\uB97C \uC368? "
+  - speakerIndex: 0
+    dialogue: "\uB180\uC774\uB294 \uB05D\uC774\uC57C \uC778\uAC04. \uC7AC\uBBF8\uC5C6\uC5B4\uC9C8\uAC70..."
