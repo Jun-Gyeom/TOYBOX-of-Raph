@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
-    public int CurrentPhase { get; private set; } = 0;
+    private int _CurrentPhase;
+    public int CurrentPhase { get { return _CurrentPhase; } private set { _CurrentPhase = value; } }
+
+    public delegate void PhaseUpdateDel(int count);
+    public PhaseUpdateDel pud;
+
     [SerializeField] private List<Phase> phases;
     [SerializeField] private Animator bossAnim;
 
@@ -14,6 +20,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject DownThomasPrefab;
 
     [SerializeField] protected List<GameObject> TrailsClone;
+    [SerializeField] protected List<GameObject> TrailsLineClone;
 
     [Header("Warning Line")]
     [SerializeField] private TrailLine LinePrefab;
@@ -133,6 +140,20 @@ public class BossManager : MonoBehaviour
     // 광차 생성 메서드 
     public void CreateThomas(TrailData traildata)
     {
+        for (int i = TrailsClone.Count - 1; i >= 0; i--)
+        {
+            if (TrailsClone[i] == null)
+            {
+                TrailsClone.RemoveAt(i);
+            }
+        }
+        for (int i = TrailsLineClone.Count - 1; i >= 0; i--)
+        {
+            if (TrailsLineClone[i] == null)
+            {
+                TrailsLineClone.RemoveAt(i);
+            }
+        }
         Trail trail = null;
         Vector2 TilePos = Vector2.zero;
         switch (traildata.hv)
@@ -156,6 +177,8 @@ public class BossManager : MonoBehaviour
 
         TrailLine Tline = Instantiate(LinePrefab);
         Tline.Init(ObjectPosition, traildata.hv);
+
+        TrailsLineClone.Add(Tline.gameObject);
 
         switch (traildata.hv)
         {
@@ -183,6 +206,11 @@ public class BossManager : MonoBehaviour
             Destroy(TrailsClone[i]);
         }
 
+        for (int i = TrailsLineClone.Count - 1; i >= 0; i--)
+        {
+            Destroy(TrailsLineClone[i]);
+        }
         TrailsClone.Clear();
+        TrailsLineClone.Clear();
     }
 }

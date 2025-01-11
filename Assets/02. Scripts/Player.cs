@@ -334,6 +334,9 @@ public class Player : MonoBehaviour
     public void DieEnd()
     {
         StopAllCoroutines();
+        playerUIManager.UpdateHealthUI(MaxHP);
+        playerUIManager.UpdateDashUI(3);
+        playerUIManager.UpdateInvGaugeUI(immortalCoolDown, immortalCoolDown);
         Destroy(this.gameObject);
     }
     #endregion
@@ -395,7 +398,13 @@ public class Player : MonoBehaviour
 
     private IEnumerator StartImmortalCoolDown()
     {
-        yield return new WaitForSeconds(immortalCoolDown);
+        float perFrame =  immortalCoolDown / 60;
+        for(float i=0;i < immortalCoolDown; i += perFrame)
+        {
+            yield return new WaitForSeconds(perFrame);
+            playerUIManager.UpdateInvGaugeUI(immortalCoolDown, i);
+        }
+        playerUIManager.UpdateInvGaugeUI(immortalCoolDown, immortalCoolDown);
         isImmortalCoolDown = false;
     }
 
