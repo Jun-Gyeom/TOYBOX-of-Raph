@@ -17,6 +17,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         base.Awake();
         SceneManager.sceneLoaded += SceneLoaded;
+        AudioManager.Instance.PlayBGM(0);
     }
 
     public void SceneLoaded(Scene scene,LoadSceneMode mode)

@@ -119,6 +119,7 @@ public class DialogSystem : MonoBehaviour
         // 한 글자씩 출력
         for (int i = 0; i <= message.Length; i++)
         {
+            AudioManager.Instance.PlaySFX(7);
             string currentText = message.Substring(0, i); // i번째까지의 텍스트 잘라내기
             dialogueText.text = currentText;              // 텍스트 업데이트
             yield return new WaitForSeconds(typingSpeed); // 타이핑 속도만큼 대기

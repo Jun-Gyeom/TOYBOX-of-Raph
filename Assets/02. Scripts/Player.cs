@@ -142,7 +142,11 @@ public class Player : MonoBehaviour
     }
     void MoveStart(Vector2 pos,float MoveSpeed)
     {
-        if(pos == Vector2.zero || IsMove || !MoveAble) return;
+        if (pos == Vector2.zero || IsMove || !MoveAble)
+        {
+            AudioManager.Instance.PlaySFX(10);
+            return;
+        }
         if(MovePositionGet(pos))
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
@@ -153,6 +157,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator MoveToTarget(float MoveSpeed)
     {
+        AudioManager.Instance.PlaySFX(4);
         while (Vector3.Distance(tf.position, TargetPos) > 0.1f) // 목표 지점 근처까지 이동
         {
             // 현재 위치에서 목표 위치로 일정 속도로 이동
@@ -192,9 +197,13 @@ public class Player : MonoBehaviour
         if (!PlayerAbility.dashAble) return;
 
         pos *= DashDistance;
-        if (pos == Vector2.zero || IsMove || !MoveAble || DashStack <= 0) return;
+        if (pos == Vector2.zero || IsMove || !MoveAble || DashStack <= 0)
+        {
+            return;
+        }
         if (MovePositionGet(pos))
         {
+            AudioManager.Instance.PlaySFX(6);
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
             DashStack--;
@@ -311,6 +320,7 @@ public class Player : MonoBehaviour
     {
         if (OnInvincible)
             return;
+        AudioManager.Instance.PlaySFX(8);
         CurrtyHP -= amount;
         playerUIManager.UpdateHealthUI(CurrtyHP);
         InvincibleStart(HitInvincibleTime, false);
@@ -433,6 +443,8 @@ public class Player : MonoBehaviour
         if (time == 0)
             return;
         OnInvincible = true;
+
+        AudioManager.Instance.PlaySFX(9);
 
         this.isAbility = isAbility;
         if (this.isAbility)
