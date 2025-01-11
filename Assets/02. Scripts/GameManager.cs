@@ -92,4 +92,23 @@ public class GameManager : Singleton<GameManager>
 
         isShaking = false;
     }
+
+    public void GameOver(float fadeInDuration, float fadeOutDuration, int currentPhase)
+    {
+        StartCoroutine(GameOverCoroutine(fadeInDuration, fadeOutDuration, currentPhase));
+    }
+
+    private IEnumerator GameOverCoroutine(float fadeInDuration, float fadeOutDuration, int currentPhase)
+    {
+        yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
+
+        BossManager.Instance.StartPhase(currentPhase);
+
+        yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
+    }
+
+    public void GameClear()
+    {
+
+    }
 }
