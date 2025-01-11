@@ -15,7 +15,7 @@ public class TileSetData
     public List<Vector2> tilePositions = new List<Vector2>();
     public TileType type;
     public float startupTime;
-    public int holdingTime;
+    public float holdingTime;
 
     [Header("기차 출현")]
     public bool useTrail;

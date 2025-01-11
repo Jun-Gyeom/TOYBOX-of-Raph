@@ -25,7 +25,23 @@ public class Trail : MonoBehaviour
     {
         if (isShoted)
         {
-            rb.velocity = transform.right * -1 * speed * Time.fixedDeltaTime;
+            switch (hv)
+            {
+                case HV.LEFT:
+                    rb.velocity = transform.right * -1 * speed * Time.fixedDeltaTime;
+                    break;
+                case HV.RIGHT:
+                    rb.velocity = transform.right * speed * Time.fixedDeltaTime;
+                    break;
+                case HV.UP:
+                    rb.velocity = transform.up * speed * Time.fixedDeltaTime;
+                    break;
+                case HV.DOWN:
+                    rb.velocity = transform.up * -1 * speed * Time.fixedDeltaTime;
+                    break;
+                default:
+                    break;
+            }
         }
     }
     public void Shot(float speed,HV hv,bool faster)
