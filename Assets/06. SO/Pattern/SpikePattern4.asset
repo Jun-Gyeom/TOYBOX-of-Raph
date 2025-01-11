@@ -34,7 +34,7 @@ MonoBehaviour:
     - {x: 8, y: 1}
     type: 2
     startupTime: 1
-    holdingTime: 5
+    holdingTime: 3.8
     useTrail: 0
     trails: []
   - coolDownTime: 1
@@ -44,10 +44,10 @@ MonoBehaviour:
     - {x: 0, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 4.5
+    holdingTime: 3.6
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -55,10 +55,10 @@ MonoBehaviour:
     - {x: 0, y: 1}
     type: 0
     startupTime: 0.5
-    holdingTime: 4.25
+    holdingTime: 3.4
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -66,10 +66,10 @@ MonoBehaviour:
     - {x: 2, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 4
+    holdingTime: 3.2
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -77,20 +77,20 @@ MonoBehaviour:
     - {x: 1, y: 2}
     type: 0
     startupTime: 0.5
-    holdingTime: 3.75
+    holdingTime: 3
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 1, y: 3}
     type: 0
     startupTime: 0.5
-    holdingTime: 3.5
+    holdingTime: 2.8
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -98,10 +98,10 @@ MonoBehaviour:
     - {x: 2, y: 3}
     type: 0
     startupTime: 0.5
-    holdingTime: 3.25
+    holdingTime: 2.6
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -109,10 +109,10 @@ MonoBehaviour:
     - {x: 3, y: 3}
     type: 0
     startupTime: 0.5
-    holdingTime: 3
+    holdingTime: 2.4
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -120,10 +120,10 @@ MonoBehaviour:
     - {x: 3, y: 4}
     type: 0
     startupTime: 0.5
-    holdingTime: 2.75
+    holdingTime: 2.2
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -131,10 +131,10 @@ MonoBehaviour:
     - {x: 4, y: 4}
     type: 0
     startupTime: 0.5
-    holdingTime: 2.5
+    holdingTime: 2
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -142,10 +142,10 @@ MonoBehaviour:
     - {x: 5, y: 4}
     type: 0
     startupTime: 0.5
-    holdingTime: 2.25
+    holdingTime: 1.8
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -155,20 +155,20 @@ MonoBehaviour:
     - {x: 6, y: 4}
     type: 0
     startupTime: 0.5
-    holdingTime: 2
+    holdingTime: 1.6
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 6, y: 1}
     type: 0
     startupTime: 0.5
-    holdingTime: 1.75
+    holdingTime: 1.4
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -176,10 +176,10 @@ MonoBehaviour:
     - {x: 6, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 1.5
+    holdingTime: 1.2
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -187,10 +187,10 @@ MonoBehaviour:
     - {x: 7, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 1.25
+    holdingTime: 1
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -198,37 +198,37 @@ MonoBehaviour:
     - {x: 8, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 1
+    holdingTime: 0.8
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 9, y: 0}
     type: 0
     startupTime: 0.5
-    holdingTime: 0.75
+    holdingTime: 0.6
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 9, y: 1}
     type: 0
     startupTime: 0.5
-    holdingTime: 0.5
+    holdingTime: 0.4
     useTrail: 0
     trails: []
-  - coolDownTime: 0.25
+  - coolDownTime: 0.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
     - {x: 9, y: 2}
     type: 0
     startupTime: 0.5
-    holdingTime: 0.25
+    holdingTime: 0.2
     useTrail: 0
     trails: []
   startPatternNum: 0
