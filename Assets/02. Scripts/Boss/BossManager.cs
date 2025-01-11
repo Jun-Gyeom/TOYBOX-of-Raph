@@ -9,7 +9,8 @@ public class BossManager : Singleton<BossManager>
     [SerializeField] private Animator bossAnim;
 
     [Header("Thomas Prefabs")]
-    [SerializeField] private GameObject HorizontalThomasPrefab;
+    [SerializeField] private GameObject LeftThomasPrefab;
+    [SerializeField] private GameObject RightThomasPrefab;
     [SerializeField] private GameObject DownThomasPrefab;
 
 
@@ -83,13 +84,19 @@ public class BossManager : Singleton<BossManager>
         switch (traildata.hv)
         {
             case HV.LEFT:
+                Instantiate(LeftThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
+                break;
             case HV.RIGHT:
-                Instantiate(HorizontalThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
+                Instantiate(RightThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
                 break;
             case HV.DOWN:
                 Instantiate(DownThomasPrefab, ObjectPosition, Quaternion.identity).TryGetComponent(out trail);
                 break;
         }
+
+        // Is Faster
+        if (traildata.isFast) trail?.SetFastAnim();
+
         trail?.Shot(traildata.speed, traildata.hv,traildata.isFast);
     }
 }
