@@ -98,9 +98,10 @@ public class Player : MonoBehaviour
             Vector2 pos = Vector2.zero;
 
             if (h != 0)
+            {
                 AnimFloatSet("H", Mathf.Clamp(h, -1, 1));
-            if (v != 0)
-                AnimFloatSet("V", Mathf.Clamp(v*-1, -1, 1));
+            }
+            AnimFloatSet("V", Mathf.Clamp(v * -1, -1, 1));
             if (h > 0)
                 pos = Vector2.right;
             else if (h < 0)
@@ -287,6 +288,7 @@ public class Player : MonoBehaviour
     void Falling()
     {
         AnimTriggerSet("FALL");
+        MoveAble = false;
     }
 
     //Animation Event Method
@@ -294,11 +296,14 @@ public class Player : MonoBehaviour
     {
         DirectForcingMove(BeforePos);
         Damage();
+        MoveAble = true;
     }
 
 
     void InvincibleStart(float time)
     {
+        if (time == 0)
+            return;
         OnInvincible = true;
         AnimFloatSet("ONINVINCIBLE",1);
         //Layer 따로 둬서 애니메이션 실행

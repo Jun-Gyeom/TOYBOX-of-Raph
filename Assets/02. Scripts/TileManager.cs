@@ -52,7 +52,6 @@ public class TileManager : Singleton<TileManager>
         // 3. 이벤트 트리거 함수에서 타일 홀딩 코루틴 호출 
 
         GameMap[y][x].SetTileType(type, startupTime, holdingTime);
-        GameManager.Instance.Player.Interactor();
     }
 
     // 타일 속성 변경 ( 복수 )
@@ -62,7 +61,6 @@ public class TileManager : Singleton<TileManager>
         {
             GameMap[(int)pos[i].y][(int)pos[i].x].SetTileType(type, startupTime, holdingTime);
         }
-        GameManager.Instance.Player.Interactor();
     }
 
     // 플레이어 이동 경로 체크 

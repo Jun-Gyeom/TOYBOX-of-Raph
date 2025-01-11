@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class Tile : MonoBehaviour
     private float startupTime;
     private float holdingTime;
 
-
+    public bool InteractionAble = false;
     public void Init(int x, int y)
     {
         TilePos.x = x;
@@ -69,13 +70,19 @@ public class Tile : MonoBehaviour
         Player player = GameManager.Instance.Player;
         Vector2 playerPos = player.CurrtyPos;
 
-        if (playerPos == TilePos)
+        if (PlayerPosCompare())
         {
             player.Damage();
         }
         return;
     }
-
+    private bool PlayerPosCompare()
+    {
+        Vector2 playerPos = GameManager.Instance.Player.CurrtyPos;
+        if(playerPos == TilePos)
+            return true;
+        return false;
+    }
     //타일 타입 지속시간 설정 이벤트
     public void StartTileHold()
     {
@@ -94,6 +101,13 @@ public class Tile : MonoBehaviour
         PlayerMoveAble = false; 
     }
     #endregion
+
+    public void SetInteractionAble(string interationable)
+    {
+        InteractionAble = Boolean.Parse(interationable);
+        if (InteractionAble && PlayerPosCompare())
+            GameManager.Instance.Player.Interactor();
+    }
 
     // 타일 변경 홀딩 코루틴 
     private IEnumerator TileTypeHolding()
