@@ -6,10 +6,9 @@ using UnityEngine;
 public class BossManager : MonoBehaviour
 {
     private int _CurrentPhase;
-    public int CurrentPhase { get { return _CurrentPhase; } private set { _CurrentPhase = value; } }
+    public int CurrentPhase { get { return _CurrentPhase; } private set { _CurrentPhase = value; }  }
 
-    public delegate void PhaseUpdateDel(int count);
-    public PhaseUpdateDel pud;
+    public PlayerUIManager playerui;
 
     [SerializeField] private List<Phase> phases;
     [SerializeField] private Animator bossAnim;
@@ -31,12 +30,14 @@ public class BossManager : MonoBehaviour
     private void Awake()
     {
         DialogSystems[0].StartDialogue();
+        playerui = GameObject.FindAnyObjectByType<PlayerUIManager>();
     }
 
     // 페이즈 시작 메서드 
     public void StartPhase(int phaseIndex)
     {
-        if(phaseIndex == 2)
+
+        if (phaseIndex == 2)
         {
             AudioManager.Instance.PlayBGM(1);
         }
@@ -50,6 +51,7 @@ public class BossManager : MonoBehaviour
 
         // 패턴 읽기 시작 
         StartCoroutine(ReadPatterns(phases[phaseIndex].patterns));
+        playerui.UpdatePageText(phaseIndex);
     }
 
     public void NextPhase()
