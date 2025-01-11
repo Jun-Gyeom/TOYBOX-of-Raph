@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cff1ceac5f744f4884b49f6f7f3cd32, type: 3}
-  m_Name: TestPhase
+  m_Name: TestPhase2
   m_EditorClassIdentifier: 
-  ability:
-    dashAble: 1
-    immortalAble: 1
   patterns:
-  - {fileID: 11400000, guid: 3669497fc07757146aefe710b4e20ec0, type: 2}
-  - {fileID: 11400000, guid: f9eb8b9fb9cdc40428e5f20580a8933a, type: 2}
-  - {fileID: 11400000, guid: bb9689689055dc947a172426f641de4b, type: 2}
+  - {fileID: 11400000, guid: 10c539951be91ac4aa6de9fabb8f9f5c, type: 2}
+  - {fileID: 11400000, guid: 32f1ac08e27e930448e57a50ece2c767, type: 2}

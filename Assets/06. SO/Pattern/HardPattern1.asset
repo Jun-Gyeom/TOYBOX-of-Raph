@@ -1,0 +1,320 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52524d344af832141932ce6650fcd2c4, type: 3}
+  m_Name: HardPattern1
+  m_EditorClassIdentifier: 
+  tilesets:
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 2, y: 0}
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 2, y: 2}
+    - {x: 1, y: 4}
+    - {x: 2, y: 4}
+    - {x: 3, y: 4}
+    - {x: 4, y: 4}
+    - {x: 5, y: 4}
+    - {x: 6, y: 4}
+    - {x: 7, y: 4}
+    - {x: 8, y: 4}
+    - {x: 8, y: 2}
+    - {x: 7, y: 2}
+    - {x: 5, y: 2}
+    - {x: 4, y: 2}
+    - {x: 3, y: 2}
+    - {x: 6, y: 2}
+    - {x: 3, y: 0}
+    - {x: 4, y: 0}
+    - {x: 5, y: 0}
+    - {x: 6, y: 0}
+    - {x: 7, y: 0}
+    - {x: 8, y: 0}
+    type: 2
+    startupTime: 1
+    holdingTime: 7
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 2, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 4, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 6, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 8, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 9, y: 0}
+    - {x: 9, y: 2}
+    - {x: 9, y: 4}
+    type: 0
+    startupTime: 0
+    holdingTime: 6.3
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 1, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 3, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 5, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 7, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 9, y: 1}
+    - {x: 9, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 5.6
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 2, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 4, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 6, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 8, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 8, y: 1}
+    - {x: 8, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 4.9
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 1, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 3, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 5, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 7, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 7, y: 1}
+    - {x: 7, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 4.2
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 2, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 4, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 6, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 8, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 6, y: 1}
+    - {x: 6, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 3.5
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 1, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 3, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 5, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 7, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 5, y: 1}
+    - {x: 5, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 2.8
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 2, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 4, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 6, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 8, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 4, y: 1}
+    - {x: 4, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 2.1
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 1, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 3, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 5, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 7, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 3, y: 1}
+    - {x: 3, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 1.4
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 2, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 4, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 6, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 8, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.7
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 2, y: 1}
+    - {x: 2, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 0.7
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 1, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 3, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 5, y: 0}
+      hv: 3
+      speed: 3000
+    - isFast: 0
+      pos: {x: 7, y: 0}
+      hv: 3
+      speed: 3000
+  - coolDownTime: 0.35
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 1, y: 1}
+    - {x: 1, y: 3}
+    type: 0
+    startupTime: 0
+    holdingTime: 0.35
+    useTrail: 0
+    trails: []
+  coolDownTime: 0

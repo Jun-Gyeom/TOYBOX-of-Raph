@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cff1ceac5f744f4884b49f6f7f3cd32, type: 3}
+  m_Name: Phase3
+  m_EditorClassIdentifier: 
+  ability:
+    dashAble: 1
+    immortalAble: 1
+  patterns:
+  - {fileID: 11400000, guid: c8f601ab89729ee45a328dd8be13cda7, type: 2}
+  - {fileID: 11400000, guid: 8fede7e0bc750914fa43b827d2602b67, type: 2}
+  - {fileID: 11400000, guid: 8652e6c0d0c193740af7f7cc6999d3a1, type: 2}
+  - {fileID: 11400000, guid: 3669497fc07757146aefe710b4e20ec0, type: 2}
+  - {fileID: 11400000, guid: bb9689689055dc947a172426f641de4b, type: 2}
+  - {fileID: 11400000, guid: e376e8fe72633a347a4621aa9f73704b, type: 2}
+  - {fileID: 11400000, guid: f9eb8b9fb9cdc40428e5f20580a8933a, type: 2}
+  - {fileID: 11400000, guid: 00b9460088c835945aec22a6ba714a0b, type: 2}
+  - {fileID: 11400000, guid: c8f601ab89729ee45a328dd8be13cda7, type: 2}
+  - {fileID: 11400000, guid: 32f1ac08e27e930448e57a50ece2c767, type: 2}

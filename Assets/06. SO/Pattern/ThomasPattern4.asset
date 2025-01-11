@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52524d344af832141932ce6650fcd2c4, type: 3}
+  m_Name: ThomasPattern4
+  m_EditorClassIdentifier: 
+  tilesets:
+  - coolDownTime: 0
+    playAttackAnim: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 0, y: 0}
+      hv: 0
+      speed: 210
+    - isFast: 0
+      pos: {x: 0, y: 1}
+      hv: 0
+      speed: 210
+    - isFast: 0
+      pos: {x: 0, y: 2}
+      hv: 0
+      speed: 210
+    - isFast: 0
+      pos: {x: 0, y: 3}
+      hv: 0
+      speed: 210
+    - isFast: 0
+      pos: {x: 0, y: 4}
+      hv: 0
+      speed: 210
+  coolDownTime: 0
