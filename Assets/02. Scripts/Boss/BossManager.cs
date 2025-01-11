@@ -145,7 +145,7 @@ public class BossManager : MonoBehaviour
         }
 
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
-        if (CurrentPhase >= phases.Count - 1)
+        if (CurrentPhase >= phases.Count - 1 && GameManager.Instance.Player.p_CurrtyHP > 0)
         {
             AudioManager.Instance.StopBGM();
             // TODO - 게임 클리어 

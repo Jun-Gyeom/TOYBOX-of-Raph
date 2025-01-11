@@ -44,7 +44,7 @@ public class UIManager : Singleton<UIManager>
         Time.fixedDeltaTime = 0.02f *Time.timeScale;
         PausePanel.SetActive(false);
     }
-    public void Eixt()
+    public void Exit()
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
@@ -97,6 +97,11 @@ public class UIManager : Singleton<UIManager>
     }
 
     public void HideClearPaenl()
+    {
+        Invoke("HideClearPanelInvoke", 2);
+        StartCoroutine(GameManager.Instance.ChangeScene("01. Main", 2f, 2f));
+    }
+    private void HideClearPanelInvoke()
     {
         ClearPanel.SetActive(false);
     }

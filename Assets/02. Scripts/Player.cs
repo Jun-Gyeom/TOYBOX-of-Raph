@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     //HP 
     [Header("HP")]
     [SerializeField] int CurrtyHP;
+    public int p_CurrtyHP { get { return CurrtyHP; } set {}}
     [SerializeField] int MaxHP;
     int DieHP =0;
 
