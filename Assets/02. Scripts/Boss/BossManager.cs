@@ -79,11 +79,17 @@ public class BossManager : Singleton<BossManager>
             yield return new WaitForSeconds(pattern.coolDownTime);
         }
 
-
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
+        if (CurrentPhase >= phases.Count - 1)
+        {
+            // TODO - 게임 클리어 
+        }
 
         // 보스 중간 대화 함수 호출 
-        dialogueSystems[CurrentPhase].StartDialogue();
+        if (CurrentPhase < dialogueSystems.Count - 1)
+        {
+            dialogueSystems[CurrentPhase].StartDialogue();
+        }
     }
 
     // 광차 생성 메서드 

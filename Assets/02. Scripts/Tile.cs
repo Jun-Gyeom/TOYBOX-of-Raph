@@ -63,6 +63,7 @@ public class Tile : MonoBehaviour
         StopCoroutine("TileTypeHolding");
 
         // 타일 애니메이션 재생 속도 조절
+        if (startupTime == 0) startupTime = 0.0001f;
         SetAnimInt((1f /startupTime), "STARTUP_SPEED");
 
         // 타일 애니메이션 재생 

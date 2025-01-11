@@ -45,7 +45,6 @@ public class DialogSystem : MonoBehaviour
             return;
         }
         StartCoroutine(TypeText(dialogs[currentDialogIndex].dialogue));
-        currentDialogIndex++;
     }
 
     private void EndDialogue()
@@ -65,6 +64,7 @@ public class DialogSystem : MonoBehaviour
             StopAllCoroutines();
             dialogueText.text = message; // 전체 텍스트 바로 출력
             isTypingEffect = false; // 타이핑 종료
+            currentDialogIndex++;
             yield break;
         }
 
@@ -79,6 +79,7 @@ public class DialogSystem : MonoBehaviour
         }
 
         isTypingEffect = false;
+        currentDialogIndex++;
     }
 
     [System.Serializable]
