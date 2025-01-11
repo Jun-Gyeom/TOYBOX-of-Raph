@@ -16,6 +16,7 @@ public class UIManager : Singleton<UIManager>
     public void GameStart()
     {
         StartCoroutine(GameManager.Instance.ChangeScene("02. Game", 2f, 2f));
+        AudioManager.Instance.StopBGM();
     }
 
     public void ShowOption()

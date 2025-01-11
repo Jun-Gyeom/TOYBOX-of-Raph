@@ -36,6 +36,14 @@ public class BossManager : MonoBehaviour
     // 페이즈 시작 메서드 
     public void StartPhase(int phaseIndex)
     {
+        if(phaseIndex == 2)
+        {
+            AudioManager.Instance.PlayBGM(1);
+        }
+        else
+        {
+            AudioManager.Instance.PlayBGM(2);
+        }
         // 권능 적용 
         if(GameManager.Instance.Player != null) 
             GameManager.Instance.Player.PlayerAbility = phases[phaseIndex].ability;
@@ -67,6 +75,7 @@ public class BossManager : MonoBehaviour
                 // 기차 출현
                 if (tileset.useTrail)
                 {
+                    AudioManager.Instance.PlaySFX(3);
                     for (int i = 0; i < tileset.trails.Count; i++)
                     {
                         CreateThomas(tileset.trails[i]);
@@ -77,6 +86,23 @@ public class BossManager : MonoBehaviour
                 if (tileset.useTile)
                 {
                     TileManager.Instance.SetTileType(tileset.tilePositions, tileset.type, tileset.startupTime, tileset.holdingTime);
+                    switch (tileset.type)
+                    {
+                        case TileType.VOID:
+                            AudioManager.Instance.PlaySFX(2);
+                            break;
+                        case TileType.SPIKE:
+
+                            break;
+                        case TileType.FALL:
+                            AudioManager.Instance.PlaySFX(1);
+                            break;
+                        case TileType.TADDYBEAR:
+                            AudioManager.Instance.PlaySFX(0);
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 // 보스 애니메이션 재생
@@ -119,6 +145,7 @@ public class BossManager : MonoBehaviour
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
         if (CurrentPhase >= phases.Count - 1)
         {
+            AudioManager.Instance.StopBGM();
             // TODO - 게임 클리어 
             // 1. 클리어 대화 
             DialogSystems[CurrentPhase + 1].StartDialogue();
@@ -134,6 +161,7 @@ public class BossManager : MonoBehaviour
         {
             DialogSystems[CurrentPhase + 1].StartDialogue();
             CurrentPhase++;
+            AudioManager.Instance.StopBGM();
         }
     }
 
