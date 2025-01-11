@@ -10,11 +10,17 @@ public class GameManager : Singleton<GameManager>
     private float cameraShakeDuration;
     private bool isShaking;
 
-    public GameObject cameraGameObject
+    private Player player;
+    private GameObject cameraGameObject;
+    public GameObject CameraGameObject
     {
         get
         {
-            return GameObject.Find("Main Camera");
+            if (cameraGameObject == null)
+            {
+                cameraGameObject = GameObject.Find("Main Camera");
+            }
+            return cameraGameObject;
         }
         set
         {
@@ -25,11 +31,15 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            return GameObject.Find("Player").GetComponent<Player>();
+            if (player == null)
+            {
+                player = GameObject.Find("Player").GetComponent<Player>();
+            }
+            return player;
         }
         set
         {
-            Player = value;
+            player = value;
         }
     }
 
@@ -71,14 +81,14 @@ public class GameManager : Singleton<GameManager>
         isShaking = true;
 
         float timer = cameraShakeDuration;
-        Vector3 initPos = cameraGameObject.transform.position;
+        Vector3 initPos = CameraGameObject.transform.position;
         while (timer > 0)
         {
             timer -= 0.05f;
-            cameraGameObject.transform.position = Random.insideUnitSphere * cameraShakePower + initPos;
+            CameraGameObject.transform.position = Random.insideUnitSphere * cameraShakePower + initPos;
             yield return new WaitForSeconds(0.05f);
         }
-        cameraGameObject.transform.position = initPos;
+        CameraGameObject.transform.position = initPos;
 
         isShaking = false;
     }
