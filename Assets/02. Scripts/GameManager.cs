@@ -133,9 +133,24 @@ public class GameManager : Singleton<GameManager>
         yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
     }
 
-    public void GameClear()
+    public void GameClear(float fadeInDuration, float fadeOutDuration)
     {
-        // 페이드인 후 클리어 패널 표시 
+        StartCoroutine(GameClearCoroutine(fadeInDuration, fadeOutDuration));
+    }
 
+    private IEnumerator GameClearCoroutine(float fadeInDuration, float fadeOutDuration)
+    {
+        yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
+
+        // 진행중이던 페이즈 코루틴 정지
+        BossManager.StopAllCoroutines();
+
+        TileManager.Instance.TileStateReset();
+        BossManager.TrailsCloneReset();
+
+        // 클리어 패널 표시 
+        UIManager.Instance.ShowClearPanel();
+
+        yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
     }
 }
