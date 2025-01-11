@@ -16,23 +16,23 @@ public class BossManager : Singleton<BossManager>
     [Header("Warning Line")]
     [SerializeField] private TrailLine LinePrefab;
 
-    [Header("Dialogue Systems")]
-    [SerializeField] private List<DialogSystem> dialogueSystems;
-
+    [Header("Dialogue System")]
+    [SerializeField] public List<DialogSystem> DialogSystems;
 
     protected override void Awake()
     {
-        StartPhase(phases[CurrentPhase]);
+        base.Awake();
+        DialogSystems[0].StartDialogue();
     }
 
     // 페이즈 시작 메서드 
-    public void StartPhase(Phase phase)
+    public void StartPhase(int phaseIndex)
     {
         // 권능 적용 
-        GameManager.Instance.Player.PlayerAbility = phase.ability;
+        GameManager.Instance.Player.PlayerAbility = phases[phaseIndex].ability;
 
         // 패턴 읽기 시작 
-        StartCoroutine(ReadPatterns(phase.patterns));
+        StartCoroutine(ReadPatterns(phases[phaseIndex].patterns));
     }
 
     public void NextPhase()
@@ -40,7 +40,7 @@ public class BossManager : Singleton<BossManager>
         if (CurrentPhase < phases.Count - 1)
         {
             CurrentPhase++;
-            StartPhase(phases[CurrentPhase]);
+            StartPhase(CurrentPhase);
         }
     }
 
@@ -112,12 +112,20 @@ public class BossManager : Singleton<BossManager>
         if (CurrentPhase >= phases.Count - 1)
         {
             // TODO - 게임 클리어 
+            // 1. 클리어 대화 
+            DialogSystems[CurrentPhase + 1].StartDialogue();
+
+            // 2. 클리어 화면 
+
+
+            yield break;
         }
 
         // 보스 중간 대화 함수 호출 
-        if (CurrentPhase < dialogueSystems.Count - 1)
+        if (CurrentPhase < phases.Count)
         {
-            dialogueSystems[CurrentPhase].StartDialogue();
+            DialogSystems[CurrentPhase + 1].StartDialogue();
+            CurrentPhase++;
         }
     }
 

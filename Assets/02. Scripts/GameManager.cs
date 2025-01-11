@@ -10,25 +10,27 @@ public class GameManager : Singleton<GameManager>
     private float cameraShakeDuration;
     private bool isShaking;
 
-    public GameObject cameraGameObject;
-    public Player Player;
-
-    protected override void Awake()
+    public GameObject cameraGameObject
     {
-        base.Awake();
-
-        if (!GameObject.Find("Player").TryGetComponent(out Player))
-            Debug.LogWarning("GameManager : PlayerClass - NULL");
-
-        if (!GameObject.Find("Main Camera"))
+        get
         {
-            Debug.LogWarning("GameManager : Main Camera - NULL");
+            return GameObject.Find("Main Camera");
         }
-        else
+        set
         {
-            cameraGameObject = GameObject.Find("Main Camera");
+            cameraGameObject = value;
         }
-
+    }
+    public Player Player
+    {
+        get
+        {
+            return GameObject.Find("Player").GetComponent<Player>();
+        }
+        set
+        {
+            Player = value;
+        }
     }
 
     public void SceneLoad(string name)

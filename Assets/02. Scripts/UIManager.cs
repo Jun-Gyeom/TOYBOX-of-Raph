@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Drawing;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -12,6 +13,29 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] List<GameObject> dashStacks;   // 대쉬 UI 
     [SerializeField] GameObject fadePanel;          // 페이드 패널 게임오브젝트
     [SerializeField] Image fadeImage;               // 페이드 이미지 
+    [SerializeField] GameObject optionPanel;        // 설정 창 
+
+    #region Main Menu
+    public void GameStart()
+    {
+        StartCoroutine(GameManager.Instance.ChangeScene("02. Game", 2f, 2f));
+    }
+
+    public void ShowOption()
+    {
+        optionPanel.SetActive(true);
+    }
+
+    public void HideOption()
+    {
+        optionPanel.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    #endregion
 
     // 체력 UI 업데이트
     public void UpdateHealthUI(int amount)
@@ -62,11 +86,11 @@ public class UIManager : Singleton<UIManager>
     {
         fadePanel.SetActive(true);
 
-        float timer = duration;
-        while (timer > 0)
+        float timer = 0f;
+        while (timer < duration)
         {
-            timer -= Time.deltaTime;
-            Color color = fadeImage.color;
+            timer += Time.deltaTime;
+            UnityEngine.Color color = fadeImage.color;
             color.a = Mathf.Clamp01(timer / duration);
             fadeImage.color = color;
             yield return null;
@@ -76,11 +100,12 @@ public class UIManager : Singleton<UIManager>
     // 화면 페이드아웃
     public IEnumerator FadeOut(float duration)
     {
-        float timer = 0f;
-        while (timer < duration)
+
+        float timer = duration;
+        while (timer > 0)
         {
-            timer += Time.deltaTime;
-            Color color = fadeImage.color;
+            timer -= Time.deltaTime;
+            UnityEngine.Color color = fadeImage.color;
             color.a = Mathf.Clamp01(timer / duration);
             fadeImage.color = color;
             yield return null;
