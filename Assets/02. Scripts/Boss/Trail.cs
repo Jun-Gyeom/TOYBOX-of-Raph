@@ -9,12 +9,16 @@ public class Trail : MonoBehaviour
     private float speed; 
 
     private Rigidbody2D rb;
-    private SpriteRenderer childSprite;
+    private List<SpriteRenderer> childSprite = new List<SpriteRenderer>();
 
     private void Awake()
     {
         TryGetComponent(out rb);
-        childSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        for(int i=0;i<transform.childCount;i++)
+        {
+            transform.GetChild(0).TryGetComponent(out SpriteRenderer renderer);
+            childSprite.Add(renderer);
+        }
     }
 
     private void FixedUpdate()
@@ -24,7 +28,7 @@ public class Trail : MonoBehaviour
             rb.velocity = transform.right * -1 * speed * Time.fixedDeltaTime;
         }
     }
-    public void Shot(float speed,HV hv)
+    public void Shot(float speed,HV hv,bool faster)
     {
         isShoted = true;
         this.speed = speed;
@@ -36,18 +40,12 @@ public class Trail : MonoBehaviour
     {
         switch (hv)
         {
-            case HV.LEFT:
-                //±×´ë·Î 
-                break;
             case HV.RIGHT:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
-                childSprite.flipY = true;
-                break;
-            case HV.UP:
-                transform.rotation = Quaternion.Euler(0, 0, -90);
-                break;
-            case HV.DOWN:
-                transform.rotation = Quaternion.Euler(0, 0, 90);
+                foreach (SpriteRenderer renderer in childSprite)
+                {
+                    renderer.flipY = true;
+                }
                 break;
             default:
                 break;

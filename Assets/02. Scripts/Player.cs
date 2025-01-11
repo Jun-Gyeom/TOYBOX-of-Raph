@@ -18,16 +18,21 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 StartPos;
     [SerializeField] float MoveSpeed;
     [SerializeField] float DashSpeed;
+    [SerializeField] int MaxDashStack = 3;
+    [SerializeField] public int DashStack { get; private set; }
     [SerializeField] float ForcingMoveSpeed;
 
     public Vector2 CurrtyPos { get; private set; }
 
     Vector2 NextPos;
+    Vector2 BeforePos;
     Vector3 TargetPos;
     float MoveDelay;
     bool IsMove;
     bool MoveAble = true;
     int DashDistance = 2;
+    float DashChargingDelay = 1;
+    bool DashCharging = false;
     float h, v;
 
     //HP 
@@ -59,6 +64,7 @@ public class Player : MonoBehaviour
     private void Init_StartSet()
     {
         DirectForcingMove(StartPos);
+        DashStack = MaxDashStack;
         CurrtyPos = StartPos;
         CurrtyHP = MaxHP;
         DieHP = 0;
@@ -91,6 +97,10 @@ public class Player : MonoBehaviour
 
             Vector2 pos = Vector2.zero;
 
+            if (h != 0)
+                AnimFloatSet("H", Mathf.Clamp(h, -1, 1));
+            if (v != 0)
+                AnimFloatSet("V", Mathf.Clamp(v*-1, -1, 1));
             if (h > 0)
                 pos = Vector2.right;
             else if (h < 0)
@@ -115,14 +125,6 @@ public class Player : MonoBehaviour
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
-
-            if (pos.x != 0)
-                AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
-            if (pos.y != 0)
-            {
-                AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
-                AnimFloatSet("H", 0);
-            }
             StartCoroutine("MoveToTarget",MoveSpeed);
         }
     }
@@ -157,6 +159,7 @@ public class Player : MonoBehaviour
     void MoveStop()
     {
         IsMove = false;
+        BeforePos = CurrtyPos;
         CurrtyPos = NextPos;
         AnimBoolSet("DASH", false);
         Interactor();
@@ -164,22 +167,30 @@ public class Player : MonoBehaviour
     void DashStart(Vector2 pos, float MoveSpeed)
     {
         pos *= DashDistance;
-        if (pos == Vector2.zero || IsMove || !MoveAble) return;
+        if (pos == Vector2.zero || IsMove || !MoveAble || DashStack <= 0) return;
         if (MovePositionGet(pos))
         {
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
-            if (pos.x != 0)
-                AnimFloatSet("H", Mathf.Clamp(pos.x, -1, 1));
-            if (pos.y != 0)
-            {
-                AnimFloatSet("V", Mathf.Clamp(pos.y, -1, 1));
-                AnimFloatSet("H", 0);
-            }
+            DashStack--;
+            if(!DashCharging)
+                StartCoroutine("DashChargDelay");
             AnimBoolSet("DASH", true);
             StartCoroutine("MoveToTarget", MoveSpeed);
         }
     }
+    private IEnumerator DashChargDelay()
+    {
+        DashCharging = true;
+        yield return new WaitForSeconds(DashChargingDelay);
+        while (DashStack < MaxDashStack) 
+        {
+            DashStack++;
+            yield return new WaitForSeconds(1);
+        }
+        DashCharging = false;
+    }
+
     //°­Á¦ ÀÌµ¿ (ºñÅ¸°ÙÆÃ - Å½»öÇÔ)
     public bool ForcingMove()
     {
@@ -209,7 +220,8 @@ public class Player : MonoBehaviour
     //Áï½Ã °­Á¦ ÀÌµ¿ 
     public void DirectForcingMove(Vector2 pos)
     {
-        tf.position = tileManager.GetTileObejctPosition(pos); 
+        tf.position = tileManager.GetTileObejctPosition(pos);
+        CurrtyPos = pos;
     }
 
     bool MovePositionGet(Vector2 pos)
@@ -274,15 +286,14 @@ public class Player : MonoBehaviour
 
     void Falling()
     {
-        //1. ¶³¾îÁü
-        //2. ¶³¾îÁü ¿Ï·á½Ã ¿ø À§Ä¡·Î º¹±Í
-        //3. Damage È£Ãâ
+        AnimTriggerSet("FALL");
     }
 
     //Animation Event Method
     public void FallingEnd()
     {
-        
+        DirectForcingMove(BeforePos);
+        Damage();
     }
 
 

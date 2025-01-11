@@ -51,6 +51,8 @@ public class Tile : MonoBehaviour
             default:
                 break;
         }
+        //이전 상태의 TileTypeHolding 코루틴 취소
+        StopCoroutine("TileTypeHolding");
 
         // 타일 애니메이션 재생 속도 조절
         SetAnimInt((1f /startupTime), "STARTUP_SPEED");
@@ -77,7 +79,7 @@ public class Tile : MonoBehaviour
     //타일 타입 지속시간 설정 이벤트
     public void StartTileHold()
     {
-        StartCoroutine(TileTypeHolding());
+        StartCoroutine("TileTypeHolding");
     }
 
     //타일 타입 Base타입으로 변경 이벤트
@@ -97,7 +99,6 @@ public class Tile : MonoBehaviour
     private IEnumerator TileTypeHolding()
     {
         yield return new WaitForSeconds(holdingTime);
-
         SetAnimTrigger("END");
     }
 
