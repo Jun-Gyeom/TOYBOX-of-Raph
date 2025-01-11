@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52524d344af832141932ce6650fcd2c4, type: 3}
+  m_Name: Bunny
+  m_EditorClassIdentifier: 
+  tilesets:
+  - coolDownTime: 1.5
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 1, y: 1}
+    - {x: 2, y: 3}
+    type: 4
+    startupTime: 0.8
+    holdingTime: 0.3
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0.8
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 4, y: 1}
+    - {x: 5, y: 3}
+    type: 4
+    startupTime: 0.8
+    holdingTime: 0.3
+    useTrail: 0
+    trails: []
+  - coolDownTime: 0.8
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 7, y: 1}
+    - {x: 8, y: 3}
+    type: 4
+    startupTime: 0.8
+    holdingTime: 0.3
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1.4
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 8, y: 1}
+    - {x: 3, y: 3}
+    - {x: 5, y: 1}
+    type: 4
+    startupTime: 1
+    holdingTime: 0.3
+    useTrail: 0
+    trails: []
+  - coolDownTime: 1
+    playAttackAnim: 0
+    useTile: 1
+    tilePositions:
+    - {x: 1, y: 3}
+    - {x: 7, y: 1}
+    - {x: 4, y: 2}
+    type: 4
+    startupTime: 0.8
+    holdingTime: 0.3
+    useTrail: 0
+    trails: []
+  coolDownTime: 0
