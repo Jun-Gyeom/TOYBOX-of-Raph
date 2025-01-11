@@ -39,7 +39,6 @@ public class BossManager : Singleton<BossManager>
     {
         if (CurrentPhase < phases.Count - 1)
         {
-            CurrentPhase++;
             StartPhase(CurrentPhase);
         }
     }
