@@ -60,7 +60,7 @@ public class DataEditor : Editor
                 {
                     selectedTileSet.type = (TileType)EditorGUILayout.EnumPopup("TileType", selectedTileSet.type);
                     selectedTileSet.startupTime = EditorGUILayout.FloatField("Startup Time", selectedTileSet.startupTime);
-                    selectedTileSet.holdingTime = EditorGUILayout.IntField("Holding Time", selectedTileSet.holdingTime);
+                    selectedTileSet.holdingTime = EditorGUILayout.FloatField("Holding Time", selectedTileSet.holdingTime);
 
                     EditorGUILayout.Space();
 
