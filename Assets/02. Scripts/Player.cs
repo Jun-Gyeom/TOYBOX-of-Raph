@@ -214,16 +214,13 @@ public class Player : MonoBehaviour
     public bool ForcingMove()
     {
         List<Vector2> guide = new List<Vector2>() {Vector2.up,Vector2.right,Vector2.down,Vector2.left };
-        for (int j = 1; j <= 2; j++)
+        for (int i = 0; i < guide.Count; i++)
         {
-            for (int i = 0; i < guide.Count; i++)
-            {
-                Vector2 newPos = guide[i] * j;
-                if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
-                    continue;
-                if (ForcingMove(newPos))
-                    return true;
-            }
+            Vector2 newPos = guide[i];
+            if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
+                continue;
+            if (ForcingMove(newPos))
+                return true;
         }
         
         return false;

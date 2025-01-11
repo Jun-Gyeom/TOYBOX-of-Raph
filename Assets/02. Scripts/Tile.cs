@@ -9,10 +9,6 @@ public enum TileType
     SPIKE,  // 가시 타일
     FALL,   // 낙석 타일
     TADDYBEAR, // 곰인형 타일
-    REDBUTTON, //버튼 타일
-    BLUEBUTTON,
-    GREENBUTTON,
-    YELLOWBUTTON
 }
 
 public class Tile : MonoBehaviour
