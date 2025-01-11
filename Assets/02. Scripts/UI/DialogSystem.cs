@@ -93,13 +93,13 @@ public class DialogSystem : MonoBehaviour
         StartCoroutine(DialoguePanelFadeOut(0.5f));
 
         // 다음 페이즈로 
-        if (BossManager.Instance.CurrentPhase != 0)
+        if (GameManager.Instance.BossManager.CurrentPhase != 0)
         {
-            BossManager.Instance.NextPhase();
+            GameManager.Instance.BossManager.NextPhase();
         }
         else
         {
-            BossManager.Instance.StartPhase(0);
+            GameManager.Instance.BossManager.StartPhase(0);
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossManager : Singleton<BossManager>
+public class BossManager : MonoBehaviour
 {
     public int CurrentPhase { get; private set; } = 0;
     [SerializeField] private List<Phase> phases;
@@ -19,9 +19,8 @@ public class BossManager : Singleton<BossManager>
     [Header("Dialogue System")]
     [SerializeField] public List<DialogSystem> DialogSystems;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         DialogSystems[0].StartDialogue();
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
@@ -8,6 +9,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
+    // UI
+    [SerializeField] List<GameObject> healths;      // 체력 UI 
+    [SerializeField] TMP_Text pageText;             // 페이즈 UI
+    [SerializeField] TMP_Text timeText;             // 시간 UI
+    [SerializeField] List<GameObject> dashStacks;   // 대쉬 UI 
+
     // Is Ability Able
     public Ability PlayerAbility { get; set; } = new Ability();
     private bool isAbility;
@@ -194,7 +201,7 @@ public class Player : MonoBehaviour
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
             DashStack--;
-            UIManager.Instance.UpdateDashUI(DashStack);
+            UpdateDashUI(DashStack);
             if(!DashCharging)
                 StartCoroutine("DashChargDelay");
             AnimBoolSet("DASH", true);
@@ -208,7 +215,7 @@ public class Player : MonoBehaviour
         while (DashStack < MaxDashStack) 
         {
             DashStack++;
-            UIManager.Instance.UpdateDashUI(DashStack);
+            UpdateDashUI(DashStack);
             yield return new WaitForSeconds(1);
         }
         DashCharging = false;
@@ -308,7 +315,7 @@ public class Player : MonoBehaviour
         if (OnInvincible)
             return;
         CurrtyHP -= amount;
-        UIManager.Instance.UpdateHealthUI(CurrtyHP);
+        UpdateHealthUI(CurrtyHP);
         InvincibleStart(HitInvincibleTime, false);
 
         // 카메라 흔들림 
@@ -322,6 +329,9 @@ public class Player : MonoBehaviour
     {
         AnimTriggerSet("DIE");
         this.enabled = false;
+
+        // 게임 오버 함수 호출
+        GameManager.Instance.GameOver(2f, 2f, GameManager.Instance.BossManager.CurrentPhase);
     }
 
     public void DieEnd()
@@ -472,6 +482,52 @@ public class Player : MonoBehaviour
     private bool AnimStatCompare(string name)
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(name);
+    }
+    #endregion
+
+    #region UI
+    // 체력 UI 업데이트
+    public void UpdateHealthUI(int amount)
+    {
+        for (int i = 0; i < healths.Count; i++)
+        {
+            if (i < amount)
+            {
+                healths[i].SetActive(true);
+            }
+            else
+            {
+                healths[i].SetActive(false);
+            }
+        }
+    }
+
+    // 현재 페이즈 UI 업데이트
+    public void UpdatePageText(int pageNum)
+    {
+        pageText.text = $"페이즈 {pageNum.ToString()}";
+    }
+
+    // 현재 시간 UI 업데이트 
+    public void UpdateTimeText(float time)
+    {
+        timeText.text = string.Format("{0:D2}:{1:D2}", time / 60, time % 60);
+    }
+
+    // 대쉬 스택 UI 업데이트 
+    public void UpdateDashUI(int amount)
+    {
+        for (int i = 0; i < dashStacks.Count; i++)
+        {
+            if (i < amount)
+            {
+                dashStacks[i].SetActive(true);
+            }
+            else
+            {
+                dashStacks[i].SetActive(false);
+            }
+        }
     }
     #endregion
 }

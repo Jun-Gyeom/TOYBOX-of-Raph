@@ -6,6 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    private BossManager bossManager;
+    public BossManager BossManager {
+        get
+        {
+            if (bossManager == null)
+            {
+                bossManager = GameObject.Find("BossManager").GetComponent<BossManager>();
+            }
+            return bossManager;
+        }
+        set
+        {
+            bossManager = value;
+        }
+    }
+
     private float cameraShakePower;
     private float cameraShakeDuration;
     private bool isShaking;
@@ -102,7 +118,10 @@ public class GameManager : Singleton<GameManager>
     {
         yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
 
-        BossManager.Instance.StartPhase(currentPhase);
+        // 진행중이던 페이즈 코루틴 정지
+        // 페이즈 재시작 
+        // 플레이어 프리팹 생성 
+        GameObject.Find("BossManager").GetComponent<BossManager>().StartPhase(currentPhase);
 
         yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
     }
