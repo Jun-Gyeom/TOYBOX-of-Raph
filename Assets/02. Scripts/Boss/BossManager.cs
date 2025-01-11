@@ -54,7 +54,7 @@ public class BossManager : MonoBehaviour
 
     public void NextPhase()
     {
-        if (CurrentPhase < phases.Count - 1)
+        if (CurrentPhase < phases.Count)
         {
             StartPhase(CurrentPhase);
         }
@@ -151,7 +151,7 @@ public class BossManager : MonoBehaviour
             DialogSystems[CurrentPhase + 1].StartDialogue();
 
             // 2. 클리어 화면 
-
+            GameManager.Instance.GameClear(2f, 2f);
 
             yield break;
         }

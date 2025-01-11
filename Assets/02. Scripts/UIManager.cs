@@ -11,6 +11,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Image fadeImage;               // 페이드 이미지 
     [SerializeField] GameObject optionPanel;        // 설정 창 
     [SerializeField] GameObject PausePanel;
+    [SerializeField] GameObject ClearPanel;
 
     #region Main Menu
     public void GameStart()
@@ -66,5 +67,15 @@ public class UIManager : Singleton<UIManager>
         }
 
         fadePanel.SetActive(false);
+    }
+
+    public void ShowClearPanel()
+    {
+        ClearPanel.SetActive(true);
+    }
+
+    public void HideClearPaenl()
+    {
+        ClearPanel.SetActive(false);
     }
 }

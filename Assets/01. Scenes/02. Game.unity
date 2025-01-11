@@ -1178,6 +1178,7 @@ MonoBehaviour:
   RightThomasPrefab: {fileID: 4159225669871863161, guid: 1775f965a1dd95048972ab253257ac3a, type: 3}
   DownThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
   TrailsClone: []
+  TrailsLineClone: []
   LinePrefab: {fileID: 3526362975449000800, guid: 3794af0ad411e1d4e86788f9c7b06f55, type: 3}
   DialogSystems:
   - {fileID: 837707388}
@@ -2419,7 +2420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2809458451322311735, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3814035249840464421, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3458,6 +3459,7 @@ MonoBehaviour:
   - {fileID: 3784466364288848484}
   - {fileID: 2259695856459340684}
   - {fileID: 4446038885069542941}
+  Inv_Gauge: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
