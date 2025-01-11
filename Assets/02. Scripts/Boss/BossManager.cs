@@ -13,6 +13,9 @@ public class BossManager : Singleton<BossManager>
     [SerializeField] private GameObject RightThomasPrefab;
     [SerializeField] private GameObject DownThomasPrefab;
 
+    [Header("Dialogue Systems")]
+    [SerializeField] private List<DialogSystem> dialogueSystems;
+
 
     protected override void Awake()
     {
@@ -27,6 +30,15 @@ public class BossManager : Singleton<BossManager>
 
         // 패턴 읽기 시작 
         StartCoroutine(ReadPatterns(phase.patterns));
+    }
+
+    public void NextPhase()
+    {
+        if (CurrentPhase < phases.Count - 1)
+        {
+            CurrentPhase++;
+            StartPhase(phases[CurrentPhase]);
+        }
     }
 
     // 패턴 읽고 실행 메서드 
@@ -71,15 +83,7 @@ public class BossManager : Singleton<BossManager>
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
 
         // 보스 중간 대화 함수 호출 
-
-
-        // --- 삭제하거나 함수로 빼서 사용 
-        //// 다음 페이즈로 이동
-        //if (CurrentPhase < patterns.Count - 1)
-        //{
-        //    CurrentPhase++;
-        //    StartPattern(patterns[CurrentPhase]);
-        //}
+        dialogueSystems[CurrentPhase].StartDialogue();
     }
 
     // 광차 생성 메서드 

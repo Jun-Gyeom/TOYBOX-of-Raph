@@ -1,143 +1,90 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogSystem : MonoBehaviour
 {
-    [SerializeField]
-    private Speaker[] speakers;
-    [SerializeField]
-    private DialogData[] dialogs;
-    private bool isAutoStart = true;
-    private bool isFirst = true;
+    public bool IsActive { get; set; }
+    [SerializeField] private List<DialogData> dialogs;
+
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private Image characterImage;
+    [SerializeField] private Text dialogueText;
+    [SerializeField] private float typingSpeed = 0.1f;
+
     private int currentDialogIndex = -1;
-    private int currentSpeakerIndex = 0;
-    private float typingSpeed = 0.1f;
     private bool isTypingEffect = false;
 
-    void Awake()
+    private void Update()
     {
-        
-    }
-
-    private void Setup()
-    {
-
-        for (int i = 0; i < speakers.Length; ++i)
+        if (Input.GetMouseButtonDown(0) && IsActive)
         {
-            SetActiveObjects(speakers[i], false);
-
-            speakers[i].spriteRenderer.gameObject.SetActive(true);
+            NextDialogue();
         }
     }
 
-    public bool UpdateDialog()
+    public void StartDialogue()
     {
-        if (isFirst == true)
-        {
+        currentDialogIndex = 0;
 
-            Setup();
+        IsActive = true;
+        dialoguePanel.SetActive(true);
+        characterImage.sprite = dialogs[currentDialogIndex].characterImage.sprite;
 
-
-            if (isAutoStart) SetNextDialog();
-
-            isFirst = false;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            if (isTypingEffect == true)
-            {
-                isTypingEffect = false;
-
-        
-                StopCoroutine("OnTypingText");
-                speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
-
-                return false;
-            }
-
-            if (dialogs.Length > currentDialogIndex + 1)
-            {
-                SetNextDialog();
-            }
-
-            else
-            {
-      
-                for (int i = 0; i < speakers.Length; ++i)
-                {
-                    SetActiveObjects(speakers[i], false);
-             
-                    speakers[i].spriteRenderer.gameObject.SetActive(false);
-                }
-
-                return true;
-            }
-        }
-
-        return false;
+        NextDialogue();
     }
 
-    private void SetNextDialog()
+    public void NextDialogue()
     {
-        SetActiveObjects(speakers[currentSpeakerIndex], false);
-
+        if (currentDialogIndex >= dialogs.Count)
+        {
+            EndDialogue();
+            return;
+        }
+        StartCoroutine(TypeText(dialogs[currentDialogIndex].dialogue));
         currentDialogIndex++;
-
-        currentSpeakerIndex = dialogs[currentDialogIndex].speakerIndex;
-
-        SetActiveObjects(speakers[currentSpeakerIndex], true);
-
-
-        //speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue;
-        StartCoroutine("OnTypingText");
     }
 
-    private void SetActiveObjects(Speaker speaker, bool visible)
+    private void EndDialogue()
     {
-        speaker.imageDialog.gameObject.SetActive(visible);
-        speaker.textDialogue.gameObject.SetActive(visible);
+        IsActive = false;
+        StopAllCoroutines();
+        dialoguePanel.SetActive(false);
 
-        Color color = speaker.spriteRenderer.color;
-        color.a = visible == true ? 1 : 0.0f;
-        speaker.spriteRenderer.color = color;
+        // 다음 페이즈로 
+        BossManager.Instance.NextPhase();
     }
 
-    private IEnumerator OnTypingText()
+    private IEnumerator TypeText(string message)
     {
-        int index = 0;
+        if (isTypingEffect)
+        {
+            StopAllCoroutines();
+            dialogueText.text = message; // 전체 텍스트 바로 출력
+            isTypingEffect = false; // 타이핑 종료
+            yield break;
+        }
 
         isTypingEffect = true;
 
-        while (index < dialogs[currentDialogIndex].dialogue.Length)
+        // 한 글자씩 출력
+        for (int i = 0; i <= message.Length; i++)
         {
-            speakers[currentSpeakerIndex].textDialogue.text = dialogs[currentDialogIndex].dialogue.Substring(0, index);
-
-            index++;
-
-            yield return new WaitForSeconds(typingSpeed);
+            string currentText = message.Substring(0, i); // i번째까지의 텍스트 잘라내기
+            dialogueText.text = currentText;              // 텍스트 업데이트
+            yield return new WaitForSeconds(typingSpeed); // 타이핑 속도만큼 대기
         }
 
         isTypingEffect = false;
     }
-}
 
-[System.Serializable]
-public struct Speaker
-{
-    public Image spriteRenderer;
-    public Image imageDialog;                
-    public TextMeshProUGUI textDialogue;        	
-}
-
-[System.Serializable]
-public struct DialogData
-{
-    public int speakerIndex;        
-    [TextArea(3, 5)]
-    public string dialogue;		
+    [System.Serializable]
+    public struct DialogData
+    {
+        public Image characterImage;                // 캐릭터 이미지
+        [TextArea(3, 5)] public string dialogue;    // 대사	
+    }
 }
