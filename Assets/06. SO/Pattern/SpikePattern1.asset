@@ -309,8 +309,24 @@ MonoBehaviour:
     type: 2
     startupTime: 1
     holdingTime: 0.6
-    useTrail: 0
-    trails: []
+    useTrail: 1
+    trails:
+    - isFast: 0
+      pos: {x: 0, y: 1}
+      hv: 1
+      speed: 1000
+    - isFast: 0
+      pos: {x: 0, y: 2}
+      hv: 1
+      speed: 1000
+    - isFast: 0
+      pos: {x: 0, y: 3}
+      hv: 1
+      speed: 1000
+    - isFast: 0
+      pos: {x: 0, y: 4}
+      hv: 1
+      speed: 1000
   - coolDownTime: 1
     playAttackAnim: 0
     useTile: 1
@@ -343,24 +359,8 @@ MonoBehaviour:
     type: 2
     startupTime: 1
     holdingTime: 0.6
-    useTrail: 1
-    trails:
-    - isFast: 0
-      pos: {x: 0, y: 1}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 2}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 3}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 4}
-      hv: 1
-      speed: 1000
+    useTrail: 0
+    trails: []
   - coolDownTime: 1
     playAttackAnim: 0
     useTile: 1
@@ -372,7 +372,7 @@ MonoBehaviour:
     type: 2
     startupTime: 1
     holdingTime: 0.6
-    useTrail: 0
+    useTrail: 1
     trails:
     - isFast: 0
       pos: {x: 0, y: 0}
@@ -414,23 +414,6 @@ MonoBehaviour:
     type: 2
     startupTime: 1
     holdingTime: 0.6
-    useTrail: 1
-    trails:
-    - isFast: 0
-      pos: {x: 0, y: 0}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 1}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 2}
-      hv: 1
-      speed: 1000
-    - isFast: 0
-      pos: {x: 0, y: 3}
-      hv: 1
-      speed: 1000
-  startPatternNum: 0
+    useTrail: 0
+    trails: []
   coolDownTime: 0
