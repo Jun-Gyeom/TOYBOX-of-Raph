@@ -135,6 +135,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameClear()
     {
+        // 페이드인 후 클리어 패널 표시 
 
     }
 }
