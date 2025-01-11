@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
         {
             if (player == null)
             {
-                player = GameObject.Find("Player").GetComponent<Player>();
+                player = GameObject.FindAnyObjectByType<Player>();
             }
             return player;
         }
@@ -120,6 +120,9 @@ public class GameManager : Singleton<GameManager>
 
         // 진행중이던 페이즈 코루틴 정지
         BossManager.StopAllCoroutines();
+
+        TileManager.Instance.TileStateReset();
+        BossManager.TrailsCloneReset();
 
         // 페이즈 재시작 
         BossManager.StartPhase(currentPhase);

@@ -44,6 +44,17 @@ public class TileManager : Singleton<TileManager>
         }
     }
 
+    public void TileStateReset()
+    {
+        for (int y = 0; y < sizeY; y++)
+        {
+            for (int x = 0; x < sizeX; x++)
+            {
+                GameMap[y][x].Init(x, y);
+            }
+        }
+    }
+
     // 타일 속성 변경 ( 단수 )
     public void SetTileType(int x, int y, TileType type, float startupTime, float holdingTime)
     {

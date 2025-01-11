@@ -84,7 +84,8 @@ public class Trail : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.Player.Damage();
+            if(GameManager.Instance.Player != null) 
+                GameManager.Instance.Player.Damage();
         }
     }
 }

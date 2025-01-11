@@ -13,6 +13,8 @@ public class BossManager : MonoBehaviour
     [SerializeField] private GameObject RightThomasPrefab;
     [SerializeField] private GameObject DownThomasPrefab;
 
+    [SerializeField] protected List<GameObject> TrailsClone;
+
     [Header("Warning Line")]
     [SerializeField] private TrailLine LinePrefab;
 
@@ -28,7 +30,8 @@ public class BossManager : MonoBehaviour
     public void StartPhase(int phaseIndex)
     {
         // 권능 적용 
-        GameManager.Instance.Player.PlayerAbility = phases[phaseIndex].ability;
+        if(GameManager.Instance.Player != null) 
+            GameManager.Instance.Player.PlayerAbility = phases[phaseIndex].ability;
 
         // 패턴 읽기 시작 
         StartCoroutine(ReadPatterns(phases[phaseIndex].patterns));
@@ -169,7 +172,17 @@ public class BossManager : MonoBehaviour
 
         // Is Faster
         if (traildata.isFast) trail?.SetFastAnim();
-
+        TrailsClone.Add(trail.gameObject);
         trail?.Shot(traildata.speed, traildata.hv,traildata.isFast);
+    }
+
+    public void TrailsCloneReset()
+    {
+        for(int i= TrailsClone.Count -1;i>= 0;i--)
+        {
+            Destroy(TrailsClone[i]);
+        }
+
+        TrailsClone.Clear();
     }
 }
