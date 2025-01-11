@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cff1ceac5f744f4884b49f6f7f3cd32, type: 3}
+  m_Name: Phase1
+  m_EditorClassIdentifier: 
+  ability:
+    dashAble: 0
+    immortalAble: 0
+  patterns:
+  - {fileID: 11400000, guid: 5d9bdd53fef5f414eb9818c6dca012c9, type: 2}
+  - {fileID: 11400000, guid: 0af5059f1446e9d40a15b99ed0f6cbf5, type: 2}
+  - {fileID: 11400000, guid: 1efe34bea5afd364f92d0c796711e56f, type: 2}
+  - {fileID: 11400000, guid: c6641164d0167d94793d0aae57fd5a5c, type: 2}
+  - {fileID: 11400000, guid: 90916c07256575447b43683bd1e38370, type: 2}
