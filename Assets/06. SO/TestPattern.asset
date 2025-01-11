@@ -25,20 +25,24 @@ MonoBehaviour:
     type: 2
     startupTime: 0.1
     holdingTime: 1
-    useTrail: 0
+    useTrail: 1
     trails:
-    - isFast: 0
-      pos: {x: 3, y: 3}
+    - isFast: 1
+      pos: {x: 0, y: 0}
       hv: 0
-      speed: 250
-    - isFast: 0
-      pos: {x: 3, y: 1}
-      hv: 0
-      speed: 250
-    - isFast: 0
-      pos: {x: 3, y: 3}
+      speed: 500
+    - isFast: 1
+      pos: {x: 0, y: 0}
+      hv: 1
+      speed: 500
+    - isFast: 1
+      pos: {x: 0, y: 0}
       hv: 2
-      speed: 250
+      speed: 500
+    - isFast: 1
+      pos: {x: 0, y: 0}
+      hv: 3
+      speed: 500
   - coolDownTime: 1
     playAttackAnim: 0
     useTile: 1
@@ -95,8 +99,16 @@ MonoBehaviour:
       speed: 400
     - isFast: 0
       pos: {x: 7, y: 0}
-      hv: 3
+      hv: 1
       speed: 500
+    - isFast: 1
+      pos: {x: 8, y: 0}
+      hv: 2
+      speed: 700
+    - isFast: 1
+      pos: {x: 0, y: 4}
+      hv: 1
+      speed: 700
   - coolDownTime: 0
     playAttackAnim: 0
     useTile: 1
