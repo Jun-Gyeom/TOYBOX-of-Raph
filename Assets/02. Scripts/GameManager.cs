@@ -124,11 +124,12 @@ public class GameManager : Singleton<GameManager>
         TileManager.Instance.TileStateReset();
         BossManager.TrailsCloneReset();
 
+        // 플레이어 프리팹 생성 
+        GameObject.Find("PlayerGenerator").GetComponent<PlayerGenerator>().CreatePlayer();
+
         // 페이즈 재시작 
         BossManager.StartPhase(currentPhase);
 
-        // 플레이어 프리팹 생성 
-        GameObject.Find("PlayerGenerator").GetComponent<PlayerGenerator>().CreatePlayer();
 
         yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
     }

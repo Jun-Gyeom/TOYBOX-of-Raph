@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Phase1
   m_EditorClassIdentifier: 
   ability:
-    dashAble: 1
-    immortalAble: 1
+    dashAble: 0
+    immortalAble: 0
   patterns:
   - {fileID: 11400000, guid: 5d9bdd53fef5f414eb9818c6dca012c9, type: 2}
   - {fileID: 11400000, guid: 0af5059f1446e9d40a15b99ed0f6cbf5, type: 2}
