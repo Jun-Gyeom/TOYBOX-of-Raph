@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -642,27 +643,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1600
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 900
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1254532941342246381, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -732,10 +733,29 @@ PrefabInstance:
       propertyPath: m_FontData.m_HorizontalOverflow
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6718455375100438873, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852442199282323084, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07169801
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852442199282323084, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.07169801
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852442199282323084, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.07169801
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2809458451322311735, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 694652318}
   m_SourcePrefab: {fileID: 100100000, guid: f0d2aa3001cd8f046b782268fc7cd2d4, type: 3}
 --- !u!114 &694652314 stripped
 MonoBehaviour:
@@ -769,6 +789,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &694652318
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694652316}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &837707386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -930,6 +962,11 @@ PrefabInstance:
       propertyPath: characterImage
       value: 
       objectReference: {fileID: 694652317}
+    - target: {fileID: 9127601768537935202, guid: ee4c5156c2b93654692719f87e9c3ce6, type: 3}
+      propertyPath: dialogs.Array.data[0].dialogue
+      value: "\uBC84\uD17C\uB2E4\uACE0?! \uB9D0\uB3C4 \uC548\uB3FC \uACE0\uC791 \uC778\uAC04\uC774
+        \uB0B4 \uC7A5\uB09C\uC744?"
+      objectReference: {fileID: 0}
     - target: {fileID: 9127601768537935202, guid: ee4c5156c2b93654692719f87e9c3ce6, type: 3}
       propertyPath: dialogs.Array.data[0].characterImage
       value: 
@@ -1129,17 +1166,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phases:
-  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
-  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
-  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
-  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
-  - {fileID: 11400000, guid: d70db945ac554c84a855f0a28bf768ee, type: 2}
+  - {fileID: 11400000, guid: ba975a764f4afe24f976fb8271766767, type: 2}
+  - {fileID: 11400000, guid: 2e170a7f526f3084d8bfbbd41ede9916, type: 2}
+  - {fileID: 11400000, guid: c4c733e390a57304bac95428bd8cfea7, type: 2}
   bossAnim: {fileID: 0}
   LeftThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
   RightThomasPrefab: {fileID: 4159225669871863161, guid: 1775f965a1dd95048972ab253257ac3a, type: 3}
   DownThomasPrefab: {fileID: 4159225669871863161, guid: 6c61e1fb5d7e7244c8d230faf5853c88, type: 3}
   LinePrefab: {fileID: 3526362975449000800, guid: 3794af0ad411e1d4e86788f9c7b06f55, type: 3}
-  dialogueSystems:
+  DialogSystems:
   - {fileID: 837707388}
   - {fileID: 619719738}
   - {fileID: 891240090}
@@ -1194,6 +1229,7 @@ MonoBehaviour:
   dashStacks: []
   fadePanel: {fileID: 0}
   fadeImage: {fileID: 0}
+  optionPanel: {fileID: 0}
 --- !u!4 &1242368435
 Transform:
   m_ObjectHideFlags: 0

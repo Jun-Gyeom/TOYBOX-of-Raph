@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Rendering;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ public class DialogSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && IsActive)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && IsActive)
         {
             NextDialogue();
         }
@@ -28,14 +29,52 @@ public class DialogSystem : MonoBehaviour
 
     public void StartDialogue()
     {
+        StartCoroutine(StartDialogueDelay());
+    }
+
+    private IEnumerator StartDialogueDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
         currentDialogIndex = 0;
 
         IsActive = true;
-        dialoguePanel.SetActive(true);
+        StartCoroutine(DialoguePanelFadeIn(0.5f));
         characterImage.sprite = dialogs[currentDialogIndex].characterImage.sprite;
 
         NextDialogue();
     }
+
+    #region 대화창 페이드인아웃
+    // 화면 페이드인
+    public IEnumerator DialoguePanelFadeIn(float duration)
+    {
+        dialoguePanel.SetActive(true);
+
+        float timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            dialoguePanel.GetComponent<CanvasGroup>().alpha = Mathf.Clamp01(timer / duration);
+            yield return null;
+        }
+    }
+
+    // 화면 페이드아웃
+    public IEnumerator DialoguePanelFadeOut(float duration)
+    {
+
+        float timer = duration;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            dialoguePanel.GetComponent<CanvasGroup>().alpha = Mathf.Clamp01(timer / duration);
+            yield return null;
+        }
+
+        dialoguePanel.SetActive(false);
+    }
+    #endregion
 
     public void NextDialogue()
     {
@@ -51,10 +90,17 @@ public class DialogSystem : MonoBehaviour
     {
         IsActive = false;
         StopAllCoroutines();
-        dialoguePanel.SetActive(false);
+        StartCoroutine(DialoguePanelFadeOut(0.5f));
 
         // 다음 페이즈로 
-        BossManager.Instance.NextPhase();
+        if (BossManager.Instance.CurrentPhase != 0)
+        {
+            BossManager.Instance.NextPhase();
+        }
+        else
+        {
+            BossManager.Instance.StartPhase(0);
+        }
     }
 
     private IEnumerator TypeText(string message)
