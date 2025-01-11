@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     Vector3 TargetPos;
     float MoveDelay;
     bool IsMove;
+    bool IsFalling;
     bool MoveAble = true;
     int DashDistance = 2;
     float DashChargingDelay = 1;
@@ -192,6 +193,7 @@ public class Player : MonoBehaviour
             TargetPos = tileManager.GetTileObejctPosition(NextPos);
             IsMove = true;
             DashStack--;
+            UIManager.Instance.UpdateDashUI(DashStack);
             if(!DashCharging)
                 StartCoroutine("DashChargDelay");
             AnimBoolSet("DASH", true);
@@ -205,6 +207,7 @@ public class Player : MonoBehaviour
         while (DashStack < MaxDashStack) 
         {
             DashStack++;
+            UIManager.Instance.UpdateDashUI(DashStack);
             yield return new WaitForSeconds(1);
         }
         DashCharging = false;
@@ -304,6 +307,7 @@ public class Player : MonoBehaviour
         if (OnInvincible)
             return;
         CurrtyHP -= amount;
+        UIManager.Instance.UpdateHealthUI(CurrtyHP);
         InvincibleStart(HitInvincibleTime, false);
 
         // 카메라 흔들림 
@@ -316,6 +320,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         AnimTriggerSet("DIE");
+        this.enabled = false;
     }
 
     public void DieEnd()
@@ -388,8 +393,9 @@ public class Player : MonoBehaviour
     void Falling()
     {
         //스킬 무적만 리턴시킴
-        if (OnInvincible && isAbility)
+        if (OnInvincible && isAbility || IsFalling)
             return;
+        IsFalling = true;
         AnimTriggerSet("FALL");
         MoveAble = false;
     }
@@ -399,6 +405,7 @@ public class Player : MonoBehaviour
     {
         DirectForcingMove(BeforePos);
         Damage();
+        IsFalling = false;
         MoveAble = true;
     }
 
@@ -459,6 +466,10 @@ public class Player : MonoBehaviour
     private void AnimTriggerSet(string name)
     {
         anim.SetTrigger(name);
+    }
+    private bool AnimStatCompare(string name)
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(name);
     }
     #endregion
 }

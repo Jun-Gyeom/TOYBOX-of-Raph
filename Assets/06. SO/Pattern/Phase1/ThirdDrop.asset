@@ -56,7 +56,7 @@ MonoBehaviour:
     useTrail: 0
     trails: []
   - coolDownTime: 0.7
-    playAttackAnim: 0
+    playAttackAnim: 1
     useTile: 1
     tilePositions:
     - {x: 7, y: 2}
