@@ -8,12 +8,20 @@ public enum TileType
     BASE,   // 기본 타일
     SPIKE,  // 가시 타일
     FALL,   // 낙석 타일
+    TADDYBEAR, // 곰인형 타일
+    REDBUTTON, //버튼 타일
+    BLUEBUTTON,
+    GREENBUTTON,
+    YELLOWBUTTON
 }
 
 public class Tile : MonoBehaviour
 {
-    public bool PlayerMoveAble { get; private set; }    // 이동 가능한 타일인지 여부 
+    public bool _PlayerMoveAble;
+    public bool PlayerMoveAble { get { return LeaderTile == null ? _PlayerMoveAble : LeaderTile._PlayerMoveAble; } private set { _PlayerMoveAble = value; } }    // 이동 가능한 타일인지 여부 
     public TileType Type { get; private set; }          // 타일 타입 
+
+    public Tile LeaderTile;
 
     private Vector2 TilePos;
     private Animator anim;
@@ -47,6 +55,9 @@ public class Tile : MonoBehaviour
                 PlayerMoveAble = true;
                 break;
             case TileType.FALL:
+                PlayerMoveAble = true;
+                break;
+            case TileType.TADDYBEAR:
                 PlayerMoveAble = true;
                 break;
             default:
@@ -89,6 +100,13 @@ public class Tile : MonoBehaviour
         StartCoroutine("TileTypeHolding");
     }
 
+    // 타일 변경 홀딩 코루틴 
+    private IEnumerator TileTypeHolding()
+    {
+        yield return new WaitForSeconds(holdingTime);
+        SetAnimTrigger("END");
+    }
+
     //타일 타입 Base타입으로 변경 이벤트
     public void SetBaseTile()
     {
@@ -104,25 +122,61 @@ public class Tile : MonoBehaviour
     {
         PlayerMoveAble = true;
     }
-    #endregion
 
     public void SetInteractionAble()
     {
         InteractionAble = true;
         GameManager.Instance.Player.Interactor();
     }
-
+    
     public void SetIteractionDisAble()
     {
         InteractionAble = false;
     }
-
-    // 타일 변경 홀딩 코루틴 
-    private IEnumerator TileTypeHolding()
+    public void SetTaddyBearChildNode()
     {
-        yield return new WaitForSeconds(holdingTime);
-        SetAnimTrigger("END");
+        TileManager tilemanager = TileManager.Instance;
+        Vector2 detectPos = TilePos + new Vector2(-1,-1);
+        int x = (int)detectPos.x;
+
+        for (int i=0;i<3;i++)
+        {
+            detectPos.x = x;
+            for(int j=0;j<3;j++)
+            {
+                if (detectPos == TilePos)
+                    continue;
+                tilemanager.GameMap[(int)detectPos.y][(int)detectPos.x].LeaderTile = this;
+                detectPos.x++;
+            }
+            detectPos.y++;
+        }
+
     }
+
+    public void ResetTaddyBearChildNode()
+    {
+        TileManager tilemanager = TileManager.Instance;
+        Vector2 detectPos = TilePos + new Vector2(-1, -1);
+        int x = (int)detectPos.x;
+
+        for (int i = 0; i < 3; i++)
+        {
+            detectPos.x = x;
+            for (int j = 0; j < 3; j++)
+            {
+                if (detectPos == TilePos)
+                    continue;
+                tilemanager.GameMap[(int)detectPos.y][(int)detectPos.x].LeaderTile = null;
+                detectPos.x++;
+            }
+            detectPos.y++;
+        }
+    }
+    #endregion
+
+
+
 
     public void SetAnimTrigger(string param = "SHOT")
     {
@@ -141,7 +195,6 @@ public class Tile : MonoBehaviour
             Debug.LogWarning($"{gameObject.name} Animator :: NULL");
             return;
         }
-        Debug.Log(param);
         anim.SetFloat(name, param);
     }
 }

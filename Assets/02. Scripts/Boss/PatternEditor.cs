@@ -153,6 +153,7 @@ public class DataEditor : Editor
                 }
 
                 selectedTileSet.coolDownTime = EditorGUILayout.FloatField("Cooldown Time", selectedTileSet.coolDownTime);
+                selectedTileSet.playAttackAnim = EditorGUILayout.Toggle("playAttackAnim",selectedTileSet.playAttackAnim);
 
                 // TileSetData 삭제 버튼
                 if (GUILayout.Button($"Remove TileSet {selectedPlayerIndex + 1}"))

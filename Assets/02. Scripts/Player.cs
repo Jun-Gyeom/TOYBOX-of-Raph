@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
@@ -213,11 +214,18 @@ public class Player : MonoBehaviour
     public bool ForcingMove()
     {
         List<Vector2> guide = new List<Vector2>() {Vector2.up,Vector2.right,Vector2.down,Vector2.left };
-        for(int i =0; i<guide.Count; i++)
+        for (int j = 1; j <= 2; j++)
         {
-            if(ForcingMove(guide[i]))
-                return true;
+            for (int i = 0; i < guide.Count; i++)
+            {
+                Vector2 newPos = guide[i] * j;
+                if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
+                    continue;
+                if (ForcingMove(newPos))
+                    return true;
+            }
         }
+        
         return false;
     }
     //강제 이동 (타겟팅)
@@ -234,7 +242,25 @@ public class Player : MonoBehaviour
         }
         return false;
     }
-
+    public void DirectionForcingMove()
+    {
+        List<Vector2> guide = new List<Vector2>() { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+        Debug.Log("Forcing");
+        for (int j = 1; j <= 2; j++)
+        {
+            for (int i = 0; i < guide.Count; i++)
+            {
+                Vector2 newPos = guide[i] * j;
+                if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
+                    continue;
+                if (MovePositionGet_OnlyTargetPosCheck(newPos))
+                  {
+                    DirectForcingMove(CurrtyPos + newPos);
+                    return; 
+                }
+            }
+        }
+    }
     //즉시 강제 이동 
     public void DirectForcingMove(Vector2 pos)
     {
@@ -253,6 +279,16 @@ public class Player : MonoBehaviour
             NextPos = newPos;
             return true;
         }
+    }
+    bool MovePositionGet_OnlyTargetPosCheck(Vector2 pos)
+    {
+        Vector2 newPos = CurrtyPos + pos;
+        if(tileManager.GameMap[(int)newPos.y][(int)newPos.x].PlayerMoveAble)
+        {
+            NextPos = newPos;
+            return true;
+        }
+        return false; 
     }
 
 
@@ -291,6 +327,18 @@ public class Player : MonoBehaviour
     public void Interactor()
     {
         Tile tile = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x];
+        if(tile.LeaderTile != null && tile.LeaderTile.InteractionAble)
+        {
+            switch (tile.LeaderTile.Type)
+            {
+                case TileType.TADDYBEAR:
+                    Damage();
+                    DirectionForcingMove();
+                    break;
+                default:
+                    break;
+            }
+        }
         if (!tile.InteractionAble)
             return;
         TileType type = tile.Type;
@@ -308,6 +356,10 @@ public class Player : MonoBehaviour
             case TileType.FALL:
                 Damage();
                 ForcingMove();
+                break;
+            case TileType.TADDYBEAR:
+                Damage();
+                DirectionForcingMove();
                 break;
             default:
                 break;
@@ -334,6 +386,9 @@ public class Player : MonoBehaviour
 
     void Falling()
     {
+        //스킬 무적만 리턴시킴
+        if (OnInvincible && isAbility)
+            return;
         AnimTriggerSet("FALL");
         MoveAble = false;
     }
@@ -362,7 +417,7 @@ public class Player : MonoBehaviour
         else
         {
             // 피격 애니메이션 
-            //AnimFloatSet("ONINVINCIBLE", 1);
+            AnimBoolSet("HITINVINCIBLE", true);
         }
 
         //Layer 따로 둬서 애니메이션 실행
@@ -387,7 +442,7 @@ public class Player : MonoBehaviour
         else
         {
             // 피격 애니메이션 
-            //AnimFloatSet("ONINVINCIBLE", 0);
+            AnimBoolSet("HITINVINCIBLE", false);
         }
     }
     #endregion
