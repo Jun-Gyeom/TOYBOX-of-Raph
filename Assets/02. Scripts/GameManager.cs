@@ -21,4 +21,22 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public IEnumerator ChangeScene(string name, float fadeInDuration, float fadeOutDuration)
+    {
+        yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
+
+        SceneLoad(name);
+
+        yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
+    }
+
+    public IEnumerator ReLoadScene(float fadeInDuration, float fadeOutDuration)
+    {
+        yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
+
+        SceneReload();
+
+        yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
+    }
 }
