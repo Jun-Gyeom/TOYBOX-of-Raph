@@ -842,17 +842,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &668337202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8587594125451623637, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
-  m_PrefabInstance: {fileID: 4487489791255988715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7873a60291ca6840a8f594a1ff8f005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &836661050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1013,7 @@ GameObject:
   - component: {fileID: 904424912}
   - component: {fileID: 904424914}
   - component: {fileID: 904424913}
+  - component: {fileID: 904424915}
   m_Layer: 5
   m_Name: Main
   m_TagString: Untagged
@@ -1092,6 +1082,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904424911}
   m_CullTransparentMesh: 1
+--- !u!114 &904424915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904424911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2f6c324158ff34696bbc38816a7213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadePanel: {fileID: 0}
+  fadeImage: {fileID: 0}
 --- !u!1 &978330085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,16 +1561,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 668337202}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GameStart
-        m_Mode: 1
+      - m_Target: {fileID: 904424915}
+        m_TargetAssemblyTypeName: MainMenuButtonCall, Assembly-CSharp
+        m_MethodName: SceneLoad
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 02. Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1454161230
@@ -1916,8 +1920,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 668337202}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 904424915}
+        m_TargetAssemblyTypeName: MainMenuButtonCall, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:

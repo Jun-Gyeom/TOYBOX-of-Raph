@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HardPattern1
   m_EditorClassIdentifier: 
   tilesets:
-  - coolDownTime: 1
+  - coolDownTime: 2
     playAttackAnim: 1
     useTile: 1
     tilePositions:
@@ -42,7 +42,7 @@ MonoBehaviour:
     - {x: 7, y: 0}
     - {x: 8, y: 0}
     type: 0
-    startupTime: 1
+    startupTime: 3
     holdingTime: 7
     useTrail: 1
     trails:

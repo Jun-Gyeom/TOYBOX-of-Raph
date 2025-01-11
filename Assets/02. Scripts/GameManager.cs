@@ -67,7 +67,10 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    public void _ChangeScene(string name,float fadeInDuration,float fadeOutDuration)
+    {
+        StartCoroutine(ChangeScene(name,fadeInDuration,fadeOutDuration));   
+    }
     public IEnumerator ChangeScene(string name, float fadeInDuration, float fadeOutDuration)
     {
         yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));

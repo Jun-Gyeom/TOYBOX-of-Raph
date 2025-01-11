@@ -48,7 +48,8 @@ public class UIManager : Singleton<UIManager>
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        GameManager.Instance.ChangeScene("01. Main",2,2);
+        PausePanel.SetActive(false);
+        GameManager.Instance._ChangeScene("01. Main",2,2);
     }
 
     public void Quit()
