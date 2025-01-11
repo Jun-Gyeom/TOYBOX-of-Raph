@@ -22,6 +22,9 @@ public class BossManager : Singleton<BossManager>
     // 페이즈 시작 메서드 
     public void StartPhase(Phase phase)
     {
+        // 권능 적용 
+        GameManager.Instance.Player.PlayerAbility = phase.ability;
+
         // 패턴 읽기 시작 
         StartCoroutine(ReadPatterns(phase.patterns));
     }

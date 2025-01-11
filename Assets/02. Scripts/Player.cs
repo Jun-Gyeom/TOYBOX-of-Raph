@@ -2,10 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
+    // Is Ability Able
+    public Ability PlayerAbility { get; set; } = new Ability();
+    private bool isAbility;
+
+    [SerializeField] private float immortalDuration = 1f;
+    [SerializeField] private float immortalCoolDown = 10f;
+    private bool isImmortalCoolDown;
+
     //SingleTon
     TileManager tileManager;
 
@@ -81,6 +90,11 @@ public class Player : MonoBehaviour
     void InputKey()
     {
         bool DashOn = false;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Immortal(immortalDuration);
+        }
+
         if(Input.GetKey(KeyCode.Z) && DashStack > 0)
         {
             DashOn = true;  
@@ -167,6 +181,9 @@ public class Player : MonoBehaviour
     }
     void DashStart(Vector2 pos, float MoveSpeed)
     {
+        // 대쉬 권능 여부 
+        if (!PlayerAbility.dashAble) return;
+
         pos *= DashDistance;
         if (pos == Vector2.zero || IsMove || !MoveAble || DashStack <= 0) return;
         if (MovePositionGet(pos))
@@ -254,7 +271,7 @@ public class Player : MonoBehaviour
         if (OnInvincible)
             return;
         CurrtyHP -= amount;
-        InvincibleStart(HitInvincibleTime);
+        InvincibleStart(HitInvincibleTime, false);
 
         // 카메라 흔들림 
         GameManager.Instance.ShakeCamera(0.5f, 0.3f);
@@ -297,6 +314,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 무적 스킬 
+    public void Immortal(float duration)
+    {
+        // 무적 권능 여부 + 쿨타임 
+        if (!PlayerAbility.immortalAble || isImmortalCoolDown) return;
+
+        isImmortalCoolDown = true;
+        StartCoroutine(StartImmortalCoolDown());
+
+        InvincibleStart(duration, true);
+    }
+
+    private IEnumerator StartImmortalCoolDown()
+    {
+        yield return new WaitForSeconds(immortalCoolDown);
+        isImmortalCoolDown = false;
+    }
+
     void Falling()
     {
         AnimTriggerSet("FALL");
@@ -312,12 +347,24 @@ public class Player : MonoBehaviour
     }
 
 
-    void InvincibleStart(float time)
+    void InvincibleStart(float time, bool isAbility)
     {
         if (time == 0)
             return;
         OnInvincible = true;
-        AnimFloatSet("ONINVINCIBLE",1);
+
+        this.isAbility = isAbility;
+        if (this.isAbility)
+        {
+            // 무적 권능 스킬 애니메이션
+            AnimFloatSet("ONINVINCIBLE", 1);
+        }
+        else
+        {
+            // 피격 애니메이션 
+            //AnimFloatSet("ONINVINCIBLE", 1);
+        }
+
         //Layer 따로 둬서 애니메이션 실행
         StartCoroutine("InvincibleDelay", time);
     }
@@ -329,7 +376,19 @@ public class Player : MonoBehaviour
     void InvincibleEnd()
     {
         OnInvincible = false;
-        AnimFloatSet("ONINVINCIBLE", 0);
+
+        if (this.isAbility)
+        {
+            // 무적 권능 스킬 애니메이션
+            AnimFloatSet("ONINVINCIBLE", 0);
+
+            this.isAbility = false; 
+        }
+        else
+        {
+            // 피격 애니메이션 
+            //AnimFloatSet("ONINVINCIBLE", 0);
+        }
     }
     #endregion
     #region Animation
