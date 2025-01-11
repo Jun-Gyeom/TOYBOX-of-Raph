@@ -119,9 +119,13 @@ public class GameManager : Singleton<GameManager>
         yield return StartCoroutine(UIManager.Instance.FadeIn(fadeInDuration));
 
         // 진행중이던 페이즈 코루틴 정지
+        BossManager.StopAllCoroutines();
+
         // 페이즈 재시작 
+        BossManager.StartPhase(currentPhase);
+
         // 플레이어 프리팹 생성 
-        GameObject.Find("BossManager").GetComponent<BossManager>().StartPhase(currentPhase);
+        GameObject.Find("PlayerGenerator").GetComponent<PlayerGenerator>().CreatePlayer();
 
         yield return StartCoroutine(UIManager.Instance.FadeOut(fadeOutDuration));
     }
