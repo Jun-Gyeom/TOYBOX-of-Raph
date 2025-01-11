@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BossManager : Singleton<BossManager>
 {
+    public int CurrentPhase { get; private set; } = 0;
     [SerializeField] private List<Pattern> patterns;
-    [SerializeField] private int pageNumber;
     [SerializeField] private Animator bossAnim;
+    private float coolDownTime;
 
     [Header("Thomas Prefabs")]
     [SerializeField] private GameObject LeftThomasPrefab;
@@ -16,12 +17,14 @@ public class BossManager : Singleton<BossManager>
 
     protected override void Awake()
     {
-        StartPattern(patterns[0]);
+        StartPattern(patterns[CurrentPhase]);
     }
 
     // 패턴(페이지) 시작 메서드 
     public void StartPattern(Pattern pattern)
     {
+        coolDownTime = pattern.coolDownTime;
+
         // 패턴 읽기 시작 
         StartCoroutine(ReadTileSets(pattern.tilesets));
     }
@@ -55,6 +58,22 @@ public class BossManager : Singleton<BossManager>
                 bossAnim.Play("Attack");
             }
         }
+
+        // 페이즈 쉬는 시간 
+        yield return new WaitForSeconds(coolDownTime);
+
+        // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
+
+        // 보스 중간 대화 함수 호출 
+
+
+        // --- 삭제하거나 함수로 빼서 사용 
+        //// 다음 페이즈로 이동
+        //if (CurrentPhase < patterns.Count - 1)
+        //{
+        //    CurrentPhase++;
+        //    StartPattern(patterns[CurrentPhase]);
+        //}
     }
 
     // 광차 생성 메서드 
