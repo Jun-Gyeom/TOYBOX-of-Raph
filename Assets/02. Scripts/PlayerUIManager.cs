@@ -17,7 +17,6 @@ public class PlayerUIManager : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.BossManager.pud += UpdatePageText;
     }
     // 체력 UI 업데이트
     public void UpdateHealthUI(int amount)

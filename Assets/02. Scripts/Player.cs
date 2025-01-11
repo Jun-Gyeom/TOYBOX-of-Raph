@@ -335,10 +335,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         AnimTriggerSet("DIE");
-        this.enabled = false;
 
-        // 게임 오버 함수 호출
-        GameManager.Instance.GameOver(2f, 2f, GameManager.Instance.BossManager.CurrentPhase);
     }
 
     public void DieEnd()
@@ -347,6 +344,8 @@ public class Player : MonoBehaviour
         playerUIManager.UpdateHealthUI(MaxHP);
         playerUIManager.UpdateDashUI(3);
         playerUIManager.UpdateInvGaugeUI(immortalCoolDown, immortalCoolDown);
+        // 게임 오버 함수 호출
+        GameManager.Instance.GameOver(2f, 2f, GameManager.Instance.BossManager.CurrentPhase);
         Destroy(this.gameObject);
     }
     #endregion
