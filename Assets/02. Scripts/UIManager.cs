@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Drawing;
+using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -28,6 +28,27 @@ public class UIManager : Singleton<UIManager>
     public void HideOption()
     {
         optionPanel.SetActive(false);
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape) && SceneManager.GetActiveScene().name != "01. Main")
+        {
+            Time.timeScale = 0;
+            PausePanel.SetActive(true);
+        }
+    }
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f *Time.timeScale;
+        PausePanel.SetActive(false);
+    }
+    public void Eixt()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        GameManager.Instance.ChangeScene("01. Main",2,2);
     }
 
     public void Quit()

@@ -335,17 +335,17 @@ public class Player : MonoBehaviour
     void Die()
     {
         AnimTriggerSet("DIE");
-
     }
 
     public void DieEnd()
     {
         StopAllCoroutines();
-        playerUIManager.UpdateHealthUI(MaxHP);
+        playerUIManager.UpdateHealthUI(3);
         playerUIManager.UpdateDashUI(3);
         playerUIManager.UpdateInvGaugeUI(immortalCoolDown, immortalCoolDown);
         // 게임 오버 함수 호출
         GameManager.Instance.GameOver(2f, 2f, GameManager.Instance.BossManager.CurrentPhase);
+        this.enabled = false;   
         Destroy(this.gameObject);
     }
     #endregion
@@ -382,11 +382,13 @@ public class Player : MonoBehaviour
                 break;
             case TileType.FALL:
                 Damage();
-                ForcingMove();
+                if(CurrtyHP != 0)
+                    ForcingMove();
                 break;
             case TileType.TADDYBEAR:
                 Damage();
-                DirectionForcingMove();
+                if (CurrtyHP != 0)
+                    DirectionForcingMove();
                 break;
             default:
                 break;

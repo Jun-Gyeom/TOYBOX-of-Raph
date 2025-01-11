@@ -802,10 +802,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1098,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41316cf039ed7ab47870f39475d4ed28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerui: {fileID: 0}
   phases:
   - {fileID: 11400000, guid: ba975a764f4afe24f976fb8271766767, type: 2}
   - {fileID: 11400000, guid: 2e170a7f526f3084d8bfbbd41ede9916, type: 2}
@@ -2704,6 +2705,7 @@ MonoBehaviour:
   fadeImage: {fileID: 2522114337701693478}
   optionPanel: {fileID: 0}
   PausePanel: {fileID: 5244100667966171494}
+  ClearPanel: {fileID: 0}
 --- !u!1 &4056257133710262382
 GameObject:
   m_ObjectHideFlags: 0
