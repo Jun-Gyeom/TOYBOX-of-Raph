@@ -74,7 +74,33 @@ public class BossManager : Singleton<BossManager>
                 // 보스 애니메이션 재생
                 if (tileset.playAttackAnim)
                 {
-                    bossAnim.Play("Attack");
+                    int index = 0;
+                    if(tileset.useTile)
+                    {
+                        switch (tileset.type)
+                        {
+                            case TileType.VOID:
+                                index = 0;
+                                break;
+                            case TileType.SPIKE:
+                                index = 1;
+                                break;
+                            case TileType.FALL:
+                                index = 2;
+                                break;
+                            case TileType.TADDYBEAR:
+                                index = 3; 
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else if(tileset.useTrail)
+                    {
+                        index = 0;
+                    }
+                    bossAnim.SetFloat("INDEX",index);
+                    bossAnim.SetTrigger("ATTACK");
                 }
             }
 
@@ -103,10 +129,10 @@ public class BossManager : Singleton<BossManager>
         switch (traildata.hv)
         {
             case HV.LEFT:
-                TilePos = new Vector2(0,traildata.pos.y);
+                TilePos = new Vector2(9,traildata.pos.y);
                 break;
             case HV.RIGHT:
-                TilePos = new Vector2(9, traildata.pos.y);
+                TilePos = new Vector2(0, traildata.pos.y);
                 break;
             case HV.UP:
                 TilePos = new Vector2(traildata.pos.x, 4);

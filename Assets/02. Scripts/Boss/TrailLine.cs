@@ -17,7 +17,7 @@ public class TrailLine : MonoBehaviour
                 startPos.x += offset;
                 break;
             case HV.RIGHT:
-                pivot.rotation = Quaternion.Euler(0, 0, 90);
+                pivot.rotation = Quaternion.Euler(0, 0,90);
                 startPos.x -= offset;
                 break;
             case HV.DOWN:
