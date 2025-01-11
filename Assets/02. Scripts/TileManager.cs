@@ -114,7 +114,6 @@ public class TileManager : Singleton<TileManager>
         }
         return targetPos;
     }
-
     public Vector3 GetTileObejctPosition(Vector2 pos)
     {
         return GameMap[(int)pos.y][(int)pos.x].transform.position;

@@ -9,15 +9,10 @@ public class GameManager : Singleton<GameManager>
     private float cameraShakePower;
     private float cameraShakeDuration;
     private bool isShaking;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ShakeCamera(0.3f, 1f);
-        }
-    }
 
     public GameObject cameraGameObject;
+    public Player Player;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,8 +30,6 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
-
-    public Player Player;
 
     public void SceneLoad(string name)
     {

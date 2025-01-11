@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
 public class Player : MonoBehaviour
 {
+    // Is Ability Able
+    public Ability PlayerAbility { get; set; } = new Ability();
+    private bool isAbility;
+
+    [SerializeField] private float immortalDuration = 1f;
+    [SerializeField] private float immortalCoolDown = 10f;
+    private bool isImmortalCoolDown;
+
     //SingleTon
     TileManager tileManager;
 
@@ -81,6 +91,11 @@ public class Player : MonoBehaviour
     void InputKey()
     {
         bool DashOn = false;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Immortal(immortalDuration);
+        }
+
         if(Input.GetKey(KeyCode.Z) && DashStack > 0)
         {
             DashOn = true;  
@@ -167,6 +182,9 @@ public class Player : MonoBehaviour
     }
     void DashStart(Vector2 pos, float MoveSpeed)
     {
+        // 대쉬 권능 여부 
+        if (!PlayerAbility.dashAble) return;
+
         pos *= DashDistance;
         if (pos == Vector2.zero || IsMove || !MoveAble || DashStack <= 0) return;
         if (MovePositionGet(pos))
@@ -196,11 +214,18 @@ public class Player : MonoBehaviour
     public bool ForcingMove()
     {
         List<Vector2> guide = new List<Vector2>() {Vector2.up,Vector2.right,Vector2.down,Vector2.left };
-        for(int i =0; i<guide.Count; i++)
+        for (int j = 1; j <= 2; j++)
         {
-            if(ForcingMove(guide[i]))
-                return true;
+            for (int i = 0; i < guide.Count; i++)
+            {
+                Vector2 newPos = guide[i] * j;
+                if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
+                    continue;
+                if (ForcingMove(newPos))
+                    return true;
+            }
         }
+        
         return false;
     }
     //강제 이동 (타겟팅)
@@ -217,7 +242,25 @@ public class Player : MonoBehaviour
         }
         return false;
     }
-
+    public void DirectionForcingMove()
+    {
+        List<Vector2> guide = new List<Vector2>() { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+        Debug.Log("Forcing");
+        for (int j = 1; j <= 2; j++)
+        {
+            for (int i = 0; i < guide.Count; i++)
+            {
+                Vector2 newPos = guide[i] * j;
+                if (newPos.y < 0 || newPos.x < 0 || newPos.x > 9 || newPos.y > 4)
+                    continue;
+                if (MovePositionGet_OnlyTargetPosCheck(newPos))
+                  {
+                    DirectForcingMove(CurrtyPos + newPos);
+                    return; 
+                }
+            }
+        }
+    }
     //즉시 강제 이동 
     public void DirectForcingMove(Vector2 pos)
     {
@@ -237,6 +280,16 @@ public class Player : MonoBehaviour
             return true;
         }
     }
+    bool MovePositionGet_OnlyTargetPosCheck(Vector2 pos)
+    {
+        Vector2 newPos = CurrtyPos + pos;
+        if(tileManager.GameMap[(int)newPos.y][(int)newPos.x].PlayerMoveAble)
+        {
+            NextPos = newPos;
+            return true;
+        }
+        return false; 
+    }
 
 
     #endregion
@@ -254,7 +307,7 @@ public class Player : MonoBehaviour
         if (OnInvincible)
             return;
         CurrtyHP -= amount;
-        InvincibleStart(HitInvincibleTime);
+        InvincibleStart(HitInvincibleTime, false);
 
         // 카메라 흔들림 
         GameManager.Instance.ShakeCamera(0.5f, 0.3f);
@@ -274,6 +327,18 @@ public class Player : MonoBehaviour
     public void Interactor()
     {
         Tile tile = tileManager.GameMap[(int)CurrtyPos.y][(int)CurrtyPos.x];
+        if(tile.LeaderTile != null && tile.LeaderTile.InteractionAble)
+        {
+            switch (tile.LeaderTile.Type)
+            {
+                case TileType.TADDYBEAR:
+                    Damage();
+                    DirectionForcingMove();
+                    break;
+                default:
+                    break;
+            }
+        }
         if (!tile.InteractionAble)
             return;
         TileType type = tile.Type;
@@ -292,13 +357,38 @@ public class Player : MonoBehaviour
                 Damage();
                 ForcingMove();
                 break;
+            case TileType.TADDYBEAR:
+                Damage();
+                DirectionForcingMove();
+                break;
             default:
                 break;
         }
     }
 
+    // 무적 스킬 
+    public void Immortal(float duration)
+    {
+        // 무적 권능 여부 + 쿨타임 
+        if (!PlayerAbility.immortalAble || isImmortalCoolDown) return;
+
+        isImmortalCoolDown = true;
+        StartCoroutine(StartImmortalCoolDown());
+
+        InvincibleStart(duration, true);
+    }
+
+    private IEnumerator StartImmortalCoolDown()
+    {
+        yield return new WaitForSeconds(immortalCoolDown);
+        isImmortalCoolDown = false;
+    }
+
     void Falling()
     {
+        //스킬 무적만 리턴시킴
+        if (OnInvincible && isAbility)
+            return;
         AnimTriggerSet("FALL");
         MoveAble = false;
     }
@@ -312,12 +402,24 @@ public class Player : MonoBehaviour
     }
 
 
-    void InvincibleStart(float time)
+    void InvincibleStart(float time, bool isAbility)
     {
         if (time == 0)
             return;
         OnInvincible = true;
-        AnimFloatSet("ONINVINCIBLE",1);
+
+        this.isAbility = isAbility;
+        if (this.isAbility)
+        {
+            // 무적 권능 스킬 애니메이션
+            AnimFloatSet("ONINVINCIBLE", 1);
+        }
+        else
+        {
+            // 피격 애니메이션 
+            AnimBoolSet("HITINVINCIBLE", true);
+        }
+
         //Layer 따로 둬서 애니메이션 실행
         StartCoroutine("InvincibleDelay", time);
     }
@@ -329,7 +431,19 @@ public class Player : MonoBehaviour
     void InvincibleEnd()
     {
         OnInvincible = false;
-        AnimFloatSet("ONINVINCIBLE", 0);
+
+        if (this.isAbility)
+        {
+            // 무적 권능 스킬 애니메이션
+            AnimFloatSet("ONINVINCIBLE", 0);
+
+            this.isAbility = false; 
+        }
+        else
+        {
+            // 피격 애니메이션 
+            AnimBoolSet("HITINVINCIBLE", false);
+        }
     }
     #endregion
     #region Animation
