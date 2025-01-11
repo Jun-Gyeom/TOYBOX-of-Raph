@@ -554,9 +554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patterns:
-  - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
-  - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
-  - {fileID: 11400000, guid: 94b8cf5e3a22f344b92222c4e04d1f23, type: 2}
+  - {fileID: 11400000, guid: 10c539951be91ac4aa6de9fabb8f9f5c, type: 2}
+  - {fileID: 11400000, guid: 007a1c5486133af43889de23982449b9, type: 2}
+  - {fileID: 11400000, guid: 91a6145f1aa131f458b7379dfe4745c5, type: 2}
+  - {fileID: 11400000, guid: 9c2d0991496e68b418436d60cece60e4, type: 2}
+  - {fileID: 11400000, guid: 22a0709ead9ce9f448f5e7f6b20e0787, type: 2}
   bossAnim: {fileID: 0}
   LeftThomasPrefab: {fileID: 4159225669871863161, guid: fc6f66a7d65063e4fa0fc39f62af67f8, type: 3}
   RightThomasPrefab: {fileID: 4159225669871863161, guid: 1775f965a1dd95048972ab253257ac3a, type: 3}
@@ -862,7 +864,7 @@ Transform:
   m_GameObject: {fileID: 1698265089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.15, y: -1.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -921,8 +923,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10824084, y: 1.2672675}
-  m_Size: {x: 1.2736979, y: 2.8945346}
+  m_Offset: {x: 0.09662533, y: 0.40457913}
+  m_Size: {x: 1.4130845, y: 1.4130845}
   m_Direction: 0
 --- !u!50 &1698265095
 Rigidbody2D:
