@@ -121,18 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a87c76063963043a6a8d94fcb96f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healths:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  pageText: {fileID: 0}
-  timeText: {fileID: 0}
-  dashStacks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  immortalDuration: 1
-  immortalCoolDown: 10
+  immortalDuration: 2.5
+  immortalCoolDown: 15
   StartPos: {x: 5, y: 3}
   MoveSpeed: 25
   DashSpeed: 50
@@ -140,7 +130,7 @@ MonoBehaviour:
   ForcingMoveSpeed: 20
   CurrtyHP: 0
   MaxHP: 3
-  HitInvincibleTime: 1
+  HitInvincibleTime: 1.3
 --- !u!70 &2865424747335079756
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

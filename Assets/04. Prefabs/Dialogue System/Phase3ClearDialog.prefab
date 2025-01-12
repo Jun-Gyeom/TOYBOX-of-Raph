@@ -44,16 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c053f7879314bb4c99ef03b2bed20a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakers:
-  - spriteRenderer: {fileID: 0}
-    imageDialog: {fileID: 0}
-    textDialogue: {fileID: 0}
   dialogs:
-  - speakerIndex: 0
+  - characterImage: {fileID: 21300000, guid: af96b59e6eb88de49a9cb89a642c0e73, type: 3}
     dialogue: "\uBC84\uD17C\uB098\uACE0?! \uB9D0\uB3C4 \uC548\uB3FC \uACE0\uC791
       \uC778\uAC04\uC774 \uB0B4 \uC7A5\uB09C\uC744?"
-  - speakerIndex: 0
+  - characterImage: {fileID: 21300000, guid: e577e26f9dd7cec43b7b8ff7152549ad, type: 3}
     dialogue: "\uC774\uAC74 \uBC18\uCE59\uC774\uC57C! \uC774  #@%$ \uAC10\uD788 \uC2E0\uC131\uD55C
       \uB180\uC74C\uC5D0 \uBE44\uAC81\uD55C \uC218\uB97C \uC368? "
-  - speakerIndex: 0
+  - characterImage: {fileID: 21300000, guid: b7396dfbb0880bd47a494ca5d9940c90, type: 3}
     dialogue: "\uB180\uC774\uB294 \uB05D\uC774\uC57C \uC778\uAC04. \uC7AC\uBBF8\uC5C6\uC5B4\uC9C8\uAC70..."
+  - characterImage: {fileID: 21300000, guid: af96b59e6eb88de49a9cb89a642c0e73, type: 3}
+    dialogue: "\uBB50\uC57C! \uBAB8\uC774 \uC65C \uC774\uB798!! \uB0B4\uAC00 \uC84C\uB2E4\uACE0?
+      \uADF8\uB7F4\uB9AC\uAC00 \uC5C6............."
+  dialoguePanel: {fileID: 0}
+  characterImage: {fileID: 0}
+  dialogueText: {fileID: 0}
+  typingSpeed: 0.1
