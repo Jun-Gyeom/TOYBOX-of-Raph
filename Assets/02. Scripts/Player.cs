@@ -320,6 +320,7 @@ public class Player : MonoBehaviour
 
     public void Damage(int amount = 1)
     {
+        Debug.Log("HIT");
         if (OnInvincible)
             return;
         AudioManager.Instance.PlaySFX(8);

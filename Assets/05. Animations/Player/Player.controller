@@ -294,8 +294,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: DIE
+  - m_Name: DIEBOOL
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: DIE
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -342,7 +348,7 @@ AnimatorStateMachine:
     m_Position: {x: 570, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8005618251098228190}
-    m_Position: {x: 180, y: -120, z: 0}
+    m_Position: {x: 250, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1690120139704739764}
     m_Position: {x: 300, y: -20, z: 0}
@@ -682,7 +688,7 @@ AnimatorStateTransition:
     m_ConditionEvent: FALL
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: DIE
+    m_ConditionEvent: DIEBOOL
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1690120139704739764}
