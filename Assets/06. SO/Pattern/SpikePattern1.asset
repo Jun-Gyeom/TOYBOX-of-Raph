@@ -314,19 +314,19 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 1}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 3}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 4}
       hv: 1
-      speed: 1000
+      speed: 1500
   - coolDownTime: 1
     playAttackAnim: 0
     useTile: 1
@@ -377,19 +377,19 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 1}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 1
-      speed: 1000
+      speed: 1500
     - isFast: 0
       pos: {x: 0, y: 3}
       hv: 1
-      speed: 1000
+      speed: 1500
   - coolDownTime: 1
     playAttackAnim: 0
     useTile: 1

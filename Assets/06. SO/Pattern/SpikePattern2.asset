@@ -43,11 +43,11 @@ MonoBehaviour:
     - {x: 7, y: 4}
     - {x: 9, y: 4}
     type: 2
-    startupTime: 0.8
+    startupTime: 1
     holdingTime: 0.1
     useTrail: 0
     trails: []
-  - coolDownTime: 1
+  - coolDownTime: 1.2
     playAttackAnim: 0
     useTile: 1
     tilePositions:
@@ -77,7 +77,7 @@ MonoBehaviour:
     - {x: 9, y: 3}
     - {x: 8, y: 4}
     type: 2
-    startupTime: 0.8
+    startupTime: 1
     holdingTime: 0.1
     useTrail: 0
     trails: []

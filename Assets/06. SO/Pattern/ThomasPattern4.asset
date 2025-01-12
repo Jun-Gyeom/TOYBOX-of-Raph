@@ -25,21 +25,21 @@ MonoBehaviour:
     - isFast: 0
       pos: {x: 0, y: 0}
       hv: 0
-      speed: 210
+      speed: 240
     - isFast: 0
       pos: {x: 0, y: 1}
       hv: 0
-      speed: 210
+      speed: 240
     - isFast: 0
       pos: {x: 0, y: 2}
       hv: 0
-      speed: 210
+      speed: 240
     - isFast: 0
       pos: {x: 0, y: 3}
       hv: 0
-      speed: 210
+      speed: 240
     - isFast: 0
       pos: {x: 0, y: 4}
       hv: 0
-      speed: 210
+      speed: 240
   coolDownTime: 0

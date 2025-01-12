@@ -70,7 +70,7 @@ MonoBehaviour:
     - {x: 9, y: 2}
     - {x: 9, y: 4}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 6.3
     useTrail: 1
     trails:
@@ -97,7 +97,7 @@ MonoBehaviour:
     - {x: 9, y: 1}
     - {x: 9, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 5.6
     useTrail: 1
     trails:
@@ -124,7 +124,7 @@ MonoBehaviour:
     - {x: 8, y: 1}
     - {x: 8, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 4.9
     useTrail: 1
     trails:
@@ -151,7 +151,7 @@ MonoBehaviour:
     - {x: 7, y: 1}
     - {x: 7, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 4.2
     useTrail: 1
     trails:
@@ -178,7 +178,7 @@ MonoBehaviour:
     - {x: 6, y: 1}
     - {x: 6, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 3.5
     useTrail: 1
     trails:
@@ -205,7 +205,7 @@ MonoBehaviour:
     - {x: 5, y: 1}
     - {x: 5, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 2.8
     useTrail: 1
     trails:
@@ -232,7 +232,7 @@ MonoBehaviour:
     - {x: 4, y: 1}
     - {x: 4, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 2.1
     useTrail: 1
     trails:
@@ -259,7 +259,7 @@ MonoBehaviour:
     - {x: 3, y: 1}
     - {x: 3, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 1.4
     useTrail: 1
     trails:
@@ -286,7 +286,7 @@ MonoBehaviour:
     - {x: 2, y: 1}
     - {x: 2, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 0.7
     useTrail: 1
     trails:
@@ -313,11 +313,11 @@ MonoBehaviour:
     - {x: 1, y: 1}
     - {x: 1, y: 3}
     type: 0
-    startupTime: 0
+    startupTime: 1
     holdingTime: 0.35
     useTrail: 0
     trails: []
-  - coolDownTime: 0.35
+  - coolDownTime: 1.5
     playAttackAnim: 0
     useTile: 1
     tilePositions:
