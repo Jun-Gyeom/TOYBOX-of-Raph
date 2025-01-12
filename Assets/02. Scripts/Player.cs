@@ -344,7 +344,8 @@ public class Player : MonoBehaviour
             return;
         Dieing = true;
         StopAllCoroutines();
-        AnimBoolSet("DIE",true);
+        AnimBoolSet("DIEBOOL", true);
+        AnimTriggerSet("DIE");
     }
 
     public void DieEnd()
