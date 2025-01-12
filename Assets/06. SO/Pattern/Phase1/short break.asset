@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52524d344af832141932ce6650fcd2c4, type: 3}
+  m_Name: short break
+  m_EditorClassIdentifier: 
+  tilesets:
+  - coolDownTime: 2.5
+    playAttackAnim: 0
+    useTile: 0
+    tilePositions: []
+    type: 0
+    startupTime: 0
+    holdingTime: 0
+    useTrail: 0
+    trails: []
+  coolDownTime: 0
