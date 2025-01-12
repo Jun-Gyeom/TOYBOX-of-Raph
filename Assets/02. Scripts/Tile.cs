@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     private Animator anim;
     private float startupTime;
     private float holdingTime;
+    private bool TypeChangeLock;
 
     public bool InteractionAble = false;
     public void Init(int x, int y)
@@ -35,6 +36,8 @@ public class Tile : MonoBehaviour
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)
     {
+        if (TypeChangeLock)
+            return;
         this.Type = type;
         this.startupTime = startupTime;
         this.holdingTime = holdingTime;
@@ -69,6 +72,46 @@ public class Tile : MonoBehaviour
         // 타일 애니메이션 재생 
         SetAnimInt((float)type);
         SetAnimTrigger();
+    }
+
+    public void SetTileType(TileType type,float holdingTime)
+    {
+        TypeChangeLock = true;
+        this.Type = type; 
+        switch (type)
+        {
+            case TileType.VOID:
+                PlayerMoveAble = true;
+                break;
+            case TileType.BASE:
+                PlayerMoveAble = true;
+                break;
+            case TileType.SPIKE:
+                PlayerMoveAble = true;
+                break;
+            case TileType.FALL:
+                PlayerMoveAble = true;
+                break;
+            case TileType.TADDYBEAR:
+                PlayerMoveAble = true;
+                break;
+            default:
+                break;
+        }
+        //이전 상태의 TileTypeHolding 코루틴 취소
+        StopCoroutine("TileTypeHolding");
+
+
+        // 타일 애니메이션 재생 
+        SetAnimInt((float)type);
+        SetAnimTrigger();
+
+        StartCoroutine("LockDuration", holdingTime);
+    }
+    IEnumerator LockDuration(float holdingTime)
+    {
+        yield return new WaitForSeconds(holdingTime);
+        TypeChangeLock = false;
     }
 
     #region Event

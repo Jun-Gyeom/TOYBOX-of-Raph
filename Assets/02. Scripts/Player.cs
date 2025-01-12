@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
         DirectForcingMove(StartPos);
         DashStack = MaxDashStack;
         CurrtyPos = StartPos;
+        BeforePos = CurrtyPos;
         CurrtyHP = MaxHP;
         DieHP = 0;
     }
@@ -330,12 +331,12 @@ public class Player : MonoBehaviour
 
     void Die()
     {
+        StopAllCoroutines();
         AnimTriggerSet("DIE");
     }
 
     public void DieEnd()
     {
-        StopAllCoroutines();
         playerUIManager.UpdateHealthUI(3);
         playerUIManager.UpdateDashUI(3);
         playerUIManager.UpdateInvGaugeUI(immortalCoolDown, immortalCoolDown);
@@ -429,6 +430,7 @@ public class Player : MonoBehaviour
     public void FallingEnd()
     {
         DirectForcingMove(BeforePos);
+        TileManager.Instance.OnlySetTileType((int)CurrtyPos.x, (int)CurrtyPos.y,TileType.BASE,2);
         Damage();
         IsFalling = false;
         MoveAble = true;

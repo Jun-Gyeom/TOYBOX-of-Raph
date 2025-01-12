@@ -60,6 +60,10 @@ public class BossManager : MonoBehaviour
         {
             StartPhase(CurrentPhase);
         }
+        else
+        {
+            GameManager.Instance.GameClear(2, 2);
+        }
     }
 
     // 패턴 읽고 실행 메서드 
@@ -143,7 +147,6 @@ public class BossManager : MonoBehaviour
             // 패턴 이후 쉬는 시간 
             yield return new WaitForSeconds(pattern.coolDownTime);
         }
-
         // if 모든 페이즈가 끝났는지 확인 --> 그렇다면 게임 매니저의 게임 클리어 함수 호출 
         if (CurrentPhase >= phases.Count - 1 && GameManager.Instance.Player.p_CurrtyHP > 0)
         {
@@ -151,9 +154,7 @@ public class BossManager : MonoBehaviour
             // TODO - 게임 클리어 
             // 1. 클리어 대화 
             DialogSystems[CurrentPhase + 1].StartDialogue();
-
-            // 2. 클리어 화면 
-            GameManager.Instance.GameClear(2f, 2f);
+            CurrentPhase++;
 
             yield break;
         }

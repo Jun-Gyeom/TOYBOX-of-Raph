@@ -65,6 +65,11 @@ public class TileManager : Singleton<TileManager>
         GameMap[y][x].SetTileType(type, startupTime, holdingTime);
     }
 
+    public void OnlySetTileType(int x,int y,TileType type,float holdingTime)
+    {
+        GameMap[y][x].SetTileType(type, holdingTime);
+    }
+
     // 타일 속성 변경 ( 복수 )
     public void SetTileType(List<Vector2> pos, TileType type, float startupTime, float holdingTime)
     {
