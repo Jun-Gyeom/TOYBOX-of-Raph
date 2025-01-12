@@ -2368,12 +2368,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3100.9265
+      value: 1180.9265
       objectReference: {fileID: 0}
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1608
+      value: 528
       objectReference: {fileID: 0}
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_LocalScale.x
@@ -2389,11 +2405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.6
+      value: 7.6000977
       objectReference: {fileID: 0}
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -36.61
+      value: -36.609985
       objectReference: {fileID: 0}
     - target: {fileID: 209162654381378304, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -2402,6 +2418,22 @@ PrefabInstance:
     - target: {fileID: 620263458688404555, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151321241561514596, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151321241561514596, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490764201892781773, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_Text
+      value: "\uB354 \uB180\uAC8C? \uC88B\uC544!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490764201892781773, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1976702893903468201, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_Sprite
@@ -2487,9 +2519,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 4270576338092098910, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270576338092098910, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 5938436630968367100, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086646063804462525, guid: ab0ddad573b63c94db47dac0aa8941b8, type: 3}
+      propertyPath: m_Text
+      value: "\uBC8C\uC368 \uAC00\uB824\uACE0..?"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
