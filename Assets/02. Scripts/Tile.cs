@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour
         TilePos.y = y;
         TryGetComponent(out anim);
         SetTileType(TileType.BASE, 0, 0);
+        InteractionAble = true;
     }
 
     public void SetTileType(TileType type, float startupTime, float holdingTime)

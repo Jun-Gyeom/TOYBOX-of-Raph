@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     float DashChargingDelay = 1;
     bool DashCharging = false;
     float h, v;
+    bool Dieing =false;
 
     //HP 
     [Header("HP")]
@@ -87,8 +88,12 @@ public class Player : MonoBehaviour
     {
         InputKey();
         //Moving();
+        HPCheck();
     }
     #endregion
+
+
+
     #region Move
     void InputKey()
     {
@@ -328,11 +333,18 @@ public class Player : MonoBehaviour
         if (CurrtyHP <= 0)
             Die();
     }
-
+    private void HPCheck()
+    {
+        if (CurrtyHP <= DieHP)
+            Die();
+    }
     void Die()
     {
+        if (Dieing)
+            return;
+        Dieing = true;
         StopAllCoroutines();
-        AnimTriggerSet("DIE");
+        AnimBoolSet("DIE",true);
     }
 
     public void DieEnd()
